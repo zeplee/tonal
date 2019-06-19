@@ -40,24 +40,43 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int currentIndex = 0;
-  static const List<Widget> mainPages = [
-    HomePage(),
-    CategoryPage(),
-    CartsPage(),
-    CartsPage(),
-    MinePage(),
-  ];
+  int currentIndex;
+  List<Widget> mainPages;
+  PageController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    currentIndex = 0;
+    mainPages = List()
+      ..add(HomePage())
+      ..add(CategoryPage())
+      ..add(CartsPage())
+      ..add(CartsPage())
+      ..add(MinePage());
+    controller = PageController(initialPage: currentIndex);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    controller.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: mainPages.elementAt(currentIndex),
-      ),
+      body: PageView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          //viewPage禁止左右滑动
+          onPageChanged: _pageChange,
+          controller: controller,
+          itemCount: mainPages.length,
+          itemBuilder: (context, index) => mainPages[index]),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
-        selectedItemColor: Colors.amber[800],
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.amber[500],
         unselectedItemColor: Colors.black,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -92,15 +111,19 @@ class _MainPageState extends State<MainPage> {
   }
 
   void onItemSelect(int index) {
-    setState(() {
-      currentIndex = index;
-    });
+    controller.jumpToPage(index);
+  }
+
+  void _pageChange(int index) {
+    if (index != currentIndex) {
+      setState(() {
+        currentIndex = index;
+      });
+    }
   }
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: PreferredSize(
@@ -137,8 +160,6 @@ class HomePage extends StatelessWidget {
 }
 
 class MinePage extends StatelessWidget {
-  const MinePage({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -149,8 +170,6 @@ class MinePage extends StatelessWidget {
 }
 
 class CartsPage extends StatelessWidget {
-  const CartsPage({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -161,8 +180,6 @@ class CartsPage extends StatelessWidget {
 }
 
 class CategoryPage extends StatelessWidget {
-  const CategoryPage({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
