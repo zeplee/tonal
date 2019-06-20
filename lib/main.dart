@@ -12,12 +12,12 @@ import 'package:tonal/searchResult.dart';
 import 'package:tonal/shop.dart';
 
 void main() {
-  runApp(MyApp());
   if (Platform.isAndroid) {
     //透明状态栏，android默认是半透明
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   }
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
