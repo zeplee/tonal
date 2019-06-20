@@ -7,6 +7,7 @@ import 'package:tonal/category.dart';
 import 'package:tonal/global.dart';
 import 'package:tonal/home.dart';
 import 'package:tonal/mine.dart';
+import 'package:tonal/myShop.dart';
 import 'package:tonal/prod.dart';
 import 'package:tonal/searchResult.dart';
 import 'package:tonal/shop.dart';
@@ -51,7 +52,7 @@ class MainPageState extends State<MainPage> {
   List<Widget> mainPages = [
     HomePage(),
     CategoryPage(),
-    ShopPage(),
+    MyShopPage(),
     CartsPage(),
     MinePage(),
   ];

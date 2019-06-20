@@ -49,8 +49,18 @@ class HomeContentBodyState extends State<HomeContentBody> {
                 }
               }
             }),
-        onRefresh: () {},
+        onRefresh: refresh,
       );
+
+  Future refresh() async {
+    // 延迟3秒后添加新数据， 模拟网络加载
+    await Future.delayed(Duration(seconds: 3), () {
+      setState(() {
+        _datas.clear();
+        _datas.addAll(generateWordPairs().take(20));
+      });
+    });
+  }
 }
 
 class HomeBodyListItem extends StatefulWidget {
@@ -64,36 +74,12 @@ class HomeBodyListItem extends StatefulWidget {
 
 class HomeBodyListItemState extends State<HomeBodyListItem> {
   var _isFavorite = false;
-  String _errorText;
 
   @override
   Widget build(BuildContext context) => Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text('Column One', style: Theme.of(context).primaryTextTheme.title),
-          IconButton(
-            icon: Icon(Icons.backspace),
-            onPressed: () {
-              _saveSp();
-            },
-          ),
-          Center(
-            child: TextField(
-              onSubmitted: (String text) {
-                setState(() {
-                  if (!RegExp(
-                          r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
-                      .hasMatch(text)) {
-                    _errorText = 'Error: This is not an email';
-                  } else {
-                    _errorText = null;
-                  }
-                });
-              },
-              decoration: InputDecoration(
-                  hintText: "This is a hint", errorText: _errorText),
-            ),
-          ),
           ListTile(
               title: Text(
                 widget.data.asPascalCase,
@@ -104,16 +90,7 @@ class HomeBodyListItemState extends State<HomeBodyListItem> {
                     Icon(_isFavorite ? Icons.favorite_border : Icons.favorite),
                 onPressed: () => setState(() => _isFavorite = !_isFavorite),
               ),
-              onTap: () {
-                print("tap");
-              })
+              onTap: () {})
         ],
       );
-
-  _saveSp() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    int counter = (prefs.getInt('counter') ?? 0) + 1;
-    print('Pressed $counter times.');
-    prefs.setInt('counter', counter);
-  }
 }
