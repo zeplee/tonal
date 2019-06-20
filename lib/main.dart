@@ -14,10 +14,9 @@ import 'package:tonal/shop.dart';
 void main() {
   runApp(MyApp());
   if (Platform.isAndroid) {
-    //android设置状态栏纯色，ios默认纯色
-    SystemUiOverlayStyle systemUiOverlayStyle =
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent);
-    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+    //透明状态栏，android默认是半透明
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   }
 }
 
