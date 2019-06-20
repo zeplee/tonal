@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tonal/carts.dart';
 import 'package:tonal/category.dart';
+import 'package:tonal/global.dart';
 import 'package:tonal/home.dart';
 import 'package:tonal/mine.dart';
 import 'package:tonal/prod.dart';
@@ -22,20 +23,23 @@ void main() {
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => MaterialApp(
-      theme: ThemeData(
-        primaryColor: Colors.white,
-        textSelectionColor: Colors.red,
-      ),
-      routes: {
-        //路由
-        'minePage': (BuildContext context) => MinePage(),
-        'cartsPage': (BuildContext context) => CartsPage(),
-        'categoryPage': (BuildContext context) => CategoryPage(),
-        'searchPage': (BuildContext context) => SearchResultPage(),
-        'prodPage': (BuildContext context) => ProdPage(),
-      },
-      home: MainPage());
+  Widget build(BuildContext context) {
+    Global.init(context);
+    return MaterialApp(
+        theme: ThemeData(
+          primaryColor: Colors.white,
+          textSelectionColor: Colors.red,
+        ),
+        routes: {
+          //路由
+          'minePage': (BuildContext context) => MinePage(),
+          'cartsPage': (BuildContext context) => CartsPage(),
+          'categoryPage': (BuildContext context) => CategoryPage(),
+          'searchPage': (BuildContext context) => SearchResultPage(),
+          'prodPage': (BuildContext context) => ProdPage(),
+        },
+        home: MainPage());
+  }
 }
 
 class MainPage extends StatefulWidget {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tonal/toast.dart';
 
 class ProdPage extends StatelessWidget {
   @override
@@ -7,7 +8,6 @@ class ProdPage extends StatelessWidget {
           title: Text('prodpage'),
         ),
         body: ProdBody(),
-        bottomSheet: Text('fdasfda'),
       );
 }
 
@@ -32,6 +32,19 @@ class ProdBody extends StatelessWidget {
                 Text('Hey!', style: TextStyle(fontSize: 30)),
                 Text('Hey!', style: TextStyle(fontSize: 50)),
                 Text('Hey!', style: TextStyle(fontSize: 40)),
+                RaisedButton(
+                  child: Text('Hey'),
+                  onPressed: () {
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                      content: Text('Yay! A SnackBar!'),
+                      action: SnackBarAction(
+                        label: 'Undo',
+                        onPressed: () {},
+                      ),
+                    ));
+                    Toast.show(context, '点击了RaisedButton');
+                  },
+                )
               ],
             )),
       ],
