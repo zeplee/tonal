@@ -6,7 +6,9 @@ import 'package:tonal/carts.dart';
 import 'package:tonal/category.dart';
 import 'package:tonal/home.dart';
 import 'package:tonal/mine.dart';
-import 'package:tonal/search.dart';
+import 'package:tonal/prod.dart';
+import 'package:tonal/searchResult.dart';
+import 'package:tonal/shop.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,7 +32,8 @@ class MyApp extends StatelessWidget {
         'minePage': (BuildContext context) => MinePage(),
         'cartsPage': (BuildContext context) => CartsPage(),
         'categoryPage': (BuildContext context) => CategoryPage(),
-        'searchPage': (BuildContext context) => SearchPage(),
+        'searchPage': (BuildContext context) => SearchResultPage(),
+        'prodPage': (BuildContext context) => ProdPage(),
       },
       home: MainPage());
 }
@@ -45,7 +48,7 @@ class MainPageState extends State<MainPage> {
   List<Widget> mainPages = [
     HomePage(),
     CategoryPage(),
-    CartsPage(),
+    ShopPage(),
     CartsPage(),
     MinePage(),
   ];
@@ -54,12 +57,12 @@ class MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       //IndexedStack会初始化所有的页面，并且保存状态
-      body: IndexedStack(
-        index: currentIndex,
-        children: mainPages,
-      ),
+//      body: IndexedStack(
+//        index: currentIndex,
+//        children: mainPages,
+//      ),
       //每次都会重建页面
-//      body: mainPages[currentIndex],
+      body: mainPages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         type: BottomNavigationBarType.fixed,
@@ -94,6 +97,7 @@ class MainPageState extends State<MainPage> {
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 

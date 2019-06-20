@@ -1,17 +1,44 @@
 import 'package:flutter/material.dart';
 
-class SearchPage extends StatelessWidget {
+class SearchResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(
-      title: Text('SearchPage'),
-    ),
-    body: SearchBody(),
-  );
+        appBar: AppBar(
+          title: Text('SearchPage'),
+        ),
+        endDrawer: Drawer(
+          child: ListView(
+            //少量列表不需要使用listview.builder
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                child: Text('Drawer Header'),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
+              ),
+              ListTile(
+                title: Text('Item 1'),
+                onTap: () {
+                  //close the drawer
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Item 2'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        ),
+        body: SearchResultBody(),
+      );
 }
 
 //演示两个控件，一个控件控制另一个控件的显示状态时，父控件为有状态，两个子控件无状态
-class SearchBody extends StatelessWidget {
+class SearchResultBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
