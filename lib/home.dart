@@ -8,6 +8,7 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   List<String> tabTitles;
+  List<Widget> tabBodys;
   TabController controller;
 
   @override
@@ -24,6 +25,17 @@ class HomePageState extends State<HomePage>
       "tab8",
       "tab9",
     ];
+    tabBodys=[
+      HomeBody(),
+      HomeBody(),
+      HomeBody(),
+      HomeBody(),
+      HomeBody(),
+      HomeBody(),
+      HomeBody(),
+      HomeBody(),
+      HomeBody(),
+    ];
     controller = TabController(
       length: tabTitles.length,
       vsync: this,
@@ -38,9 +50,10 @@ class HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: appbar(context),
-        body: HomeBody(),
-      );
+      appBar: appbar(context),
+      body: TabBarView(
+          controller: controller,
+          children: tabBodys));
 
   appbar(BuildContext context) => PreferredSize(
       child: AppBar(
@@ -73,22 +86,13 @@ class HomePageState extends State<HomePage>
       preferredSize: Size.fromHeight(40.0));
 
   tabview() => TabBar(
-      //设置tab是否可水平滑动
       isScrollable: true,
-//      //控制器
       controller: controller,
-      //设置tab文字得类型
       labelStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-      //设置tab选中得颜色
       labelColor: Colors.black,
-      //设置tab未选中得颜色
       unselectedLabelColor: Colors.black45,
-      //设置自定义tab的指示器，CustomUnderlineTabIndicator
-      //若不需要自定义，可直接通过
-      //indicatorColor 设置指示器颜色
-      //indicatorWight 设置指示器厚度
-      //indicatorPadding
-      //indicatorSize  设置指示器大小计算方式
+      indicatorColor :Colors.red,
+      indicatorSize :TabBarIndicatorSize.tab,
       indicator: UnderlineTabIndicator(
           insets: EdgeInsets.only(left: 15, right: 15),
           borderSide: BorderSide(width: 4.0, color: Colors.red)),
@@ -107,5 +111,5 @@ class HomeBodyState extends State<HomeBody> {
   }
 
   @override
-  Widget build(BuildContext context) => Text('fda');
+  Widget build(BuildContext context) => Text('dfa');
 }
