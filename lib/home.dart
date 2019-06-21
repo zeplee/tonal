@@ -50,26 +50,52 @@ class HomePageState extends State<HomePage>
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-      appBar: appbar(context),
-      body: TabBarView(controller: controller, children: tabBodys));
+  Widget build(BuildContext context) =>
+//      Container(
+//      decoration: BoxDecoration(
+//          image: DecorationImage(
+//        image: NetworkImage(
+//            'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg'),
+//        fit: BoxFit.cover,
+//      )),
+//      child:
+      Scaffold(
+//          backgroundColor: Colors.transparent,
+          appBar: appBar(context),
+          body: TabBarView(controller: controller, children: tabBodys));
 
-  appbar(BuildContext context) =>
+//  );
+
+  appBar(BuildContext context) =>
 //      PreferredSize(
 //      child:
       AppBar(
+//        backgroundColor: Colors.transparent,
+        //是否占用状态栏
+        primary: true,
+        //是否占满剩余空间
+        titleSpacing: 0.0,
+        toolbarOpacity: 0.6,
+        bottomOpacity: 0.6,
         leading: IconButton(
           icon: Icon(Icons.mms),
           tooltip: 'Navigation menu',
           onPressed: () => Navigator.of(context).pushNamed('categoryPage'),
         ),
         title: TextField(
-            onSubmitted: (String text) {
-              if (text.isNotEmpty) {
-                Navigator.of(context).pushNamed('searchPage');
-              }
-            },
-            decoration: InputDecoration(hintText: "search hint")),
+          textAlign: TextAlign.center,
+          onSubmitted: (String text) {
+            if (text.isNotEmpty) {
+              Navigator.of(context).pushNamed('searchPage');
+            }
+          },
+          decoration: InputDecoration(
+            hintText: "小苹果",
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+          ),
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.face),
@@ -77,28 +103,29 @@ class HomePageState extends State<HomePage>
 //                  Navigator.of(context).push(MaterialPageRoute(
 //                  builder: (BuildContext context) => CartsPage())),
           ),
-          IconButton(
-            icon: Icon(Icons.list),
-            onPressed: () => Navigator.of(context).pushNamed('minePage'),
-          ),
         ],
-        bottom: tabview(),
+        bottom: tabView(),
 //      ),
 //      preferredSize: Size.fromHeight(40.0)
       );
 
-  tabview() => TabBar(
+  tabView() => TabBar(
       isScrollable: true,
       controller: controller,
       labelStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-      labelColor: Colors.black,
+      labelColor: Colors.blueAccent,
       unselectedLabelColor: Colors.black45,
-      indicatorColor: Colors.red,
+      indicatorColor: Colors.blueAccent,
       indicatorSize: TabBarIndicatorSize.tab,
       indicator: UnderlineTabIndicator(
           insets: EdgeInsets.only(left: 15, right: 15),
-          borderSide: BorderSide(width: 4.0, color: Colors.red)),
-      tabs: tabTitles.map((item) => Tab(text: item)).toList());
+          borderSide: BorderSide(width: 4.0, color: Colors.blueAccent)),
+      tabs: tabTitles
+          .map((item) => Tab(
+                text: tabTitles.indexOf(item).isOdd ? null : item,
+                icon: tabTitles.indexOf(item).isOdd ? FlutterLogo() : null,
+              ))
+          .toList());
 }
 
 class HomeBody extends StatefulWidget {
