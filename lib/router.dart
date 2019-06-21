@@ -3,6 +3,7 @@ import 'package:tonal/about.dart';
 import 'package:tonal/carts.dart';
 import 'package:tonal/category.dart';
 import 'package:tonal/mine.dart';
+import 'package:tonal/settings.dart';
 import 'package:tonal/shop.dart';
 
 import 'prod.dart';
@@ -18,5 +19,6 @@ class Router {
     'prodPage': (BuildContext context) => ProdPage(),
     'shopPage': (BuildContext context) => ShopPage(),
     'aboutPage': (BuildContext context) => AboutPage(),
+    'settingsPage': (BuildContext context) => SettingsPage(),
   };
 }
