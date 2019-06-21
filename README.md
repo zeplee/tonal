@@ -4,3 +4,5 @@
 
 #TickerProviderStateMixin的界面的floatingActionButton不设置这个就会黑屏-why
 heroTag: 'fda',
+
+https://www.jianshu.com/p/047eb78dce53

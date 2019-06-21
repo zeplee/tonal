@@ -7,7 +7,7 @@ import 'package:tonal/settings.dart';
 import 'package:tonal/shop.dart';
 
 import 'prod.dart';
-import 'searchResult.dart';
+import 'search_result.dart';
 
 class Router {
   static Map<String, WidgetBuilder> router = {
