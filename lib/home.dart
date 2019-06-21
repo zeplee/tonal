@@ -56,8 +56,10 @@ class HomePageState extends State<HomePage>
           controller: controller,
           children: tabBodys));
 
-  appbar(BuildContext context) => PreferredSize(
-      child: AppBar(
+  appbar(BuildContext context) =>
+//      PreferredSize(
+//      child:
+      AppBar(
         leading: IconButton(
           icon: Icon(Icons.mms),
           tooltip: 'Navigation menu',
@@ -83,8 +85,9 @@ class HomePageState extends State<HomePage>
           ),
         ],
         bottom: tabview(),
-      ),
-      preferredSize: Size.fromHeight(40.0));
+//      ),
+//      preferredSize: Size.fromHeight(40.0)
+  );
 
   tabview() => TabBar(
       isScrollable: true,
