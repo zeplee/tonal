@@ -81,12 +81,12 @@ class MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       //IndexedStack会初始化所有的页面，并且保存状态
-//      body: IndexedStack(
-//        index: currentIndex,
-//        children: mainPages,
-//      ),
+      body: IndexedStack(
+        index: currentIndex,
+        children: mainPages,
+      ),
       //每次都会重建页面
-      body: mainPages[currentIndex],
+//      body: mainPages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         type: BottomNavigationBarType.fixed,

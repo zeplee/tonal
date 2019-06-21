@@ -1,5 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:tonal/toast.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -106,8 +107,12 @@ class HomeBody extends StatefulWidget {
   HomeBodyState createState() => HomeBodyState();
 }
 
-class HomeBodyState extends State<HomeBody> {
+class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
   final _datas = <WordPair>[];
+
+  //保存页面
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {

@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 
 class MinePage extends StatefulWidget {
@@ -7,6 +6,10 @@ class MinePage extends StatefulWidget {
 }
 
 class MinePageState extends State<MinePage> {
+  @override
+  void initState() {
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(

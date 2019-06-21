@@ -29,6 +29,11 @@ class CategoryBodyState extends State<CategoryBody> {
     loadData();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   loadData() async {
     String url = "https://jsonplaceholder.typicode.com/posts";
     http.Response response = await http.get(url);
