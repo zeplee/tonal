@@ -49,13 +49,42 @@ class MainPage extends StatefulWidget {
 
 class MainPageState extends State<MainPage> {
   int currentIndex = 0;
-  List<Widget> mainPages = [
-    HomePage(),
-    CategoryPage(),
-    MyShopPage(),
-    CartsPage(),
-    MinePage(),
-  ];
+  List<Widget> mainPages;
+  List<BottomNavigationBarItem> mainNaviItems;
+
+  @override
+  void initState() {
+    super.initState();
+    mainPages = [
+      HomePage(),
+      CategoryPage(),
+      MyShopPage(),
+      CartsPage(),
+      MinePage(),
+    ];
+    mainNaviItems = [
+      BottomNavigationBarItem(
+        icon: Icon(Icons.home),
+        title: Text('首页'),
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.category),
+        title: Text('分类'),
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.shop),
+        title: Text('店铺'),
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.shopping_cart),
+        title: Text('购物车'),
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.account_circle),
+        title: Text('我的'),
+      ),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,34 +101,28 @@ class MainPageState extends State<MainPage> {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.amber[500],
         unselectedItemColor: Colors.black,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('首页'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.category),
-            title: Text('分类'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shop),
-            title: Text('店铺'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            title: Text('购物车'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            title: Text('我的'),
-          ),
-        ],
+        items: mainNaviItems,
         onTap: onItemSelect,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: null,
         tooltip: 'Increment',
         child: Icon(Icons.add),
+        onPressed: () {
+          setState(() {
+            if (mainNaviItems.length == 5) {
+              mainPages.removeAt(2);
+              mainNaviItems.removeAt(2);
+            } else {
+              mainPages.insert(2, MyShopPage());
+              mainNaviItems.insert(
+                  2,
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.shop),
+                    title: Text('店铺'),
+                  ));
+            }
+          });
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
