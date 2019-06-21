@@ -10,7 +10,6 @@ import 'package:tonal/mine.dart';
 import 'package:tonal/myShop.dart';
 import 'package:tonal/prod.dart';
 import 'package:tonal/searchResult.dart';
-import 'package:tonal/shop.dart';
 
 void main() {
   if (Platform.isAndroid) {
