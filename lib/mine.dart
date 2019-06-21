@@ -1,23 +1,12 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
-class MinePage extends StatelessWidget {
+class MinePage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text('MinePage'),
-        ),
-        body: MineBody(),
-      );
+  State<StatefulWidget> createState() => MinePageState();
 }
 
-class MineBody extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => MineBodyState();
-}
-
-class MineBodyState extends State<MineBody> with TickerProviderStateMixin {
+class MinePageState extends State<MinePage> with TickerProviderStateMixin {
   AnimationController controller;
   CurvedAnimation curve;
 
@@ -26,6 +15,7 @@ class MineBodyState extends State<MineBody> with TickerProviderStateMixin {
   Color _color = Colors.green;
   BorderRadiusGeometry _borderRadius = BorderRadius.circular(8);
   bool _visible = true;
+
   @override
   void initState() {
     super.initState();
@@ -36,6 +26,15 @@ class MineBodyState extends State<MineBody> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: Text('MinePage'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.list),
+              onPressed: () => Navigator.of(context).pushNamed('aboutPage'),
+            ),
+          ],
+        ),
         body: Column(
           children: <Widget>[
             //动画形式Transition;AnimatedContainer;AnimatedOpacity
@@ -70,6 +69,8 @@ class MineBodyState extends State<MineBody> with TickerProviderStateMixin {
           ],
         ),
         floatingActionButton: FloatingActionButton(
+          //TickerProviderStateMixin的界面不设置这个就会黑屏-why
+          heroTag: 'fda',
           tooltip: 'Fade',
           child: GestureDetector(
             child: RotationTransition(
@@ -92,7 +93,7 @@ class MineBodyState extends State<MineBody> with TickerProviderStateMixin {
                     BorderRadius.circular(random.nextInt(100).toDouble());
               });
             },
-            onLongPress: (){
+            onLongPress: () {
               setState(() {
                 _visible = !_visible;
               });

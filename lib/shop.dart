@@ -38,17 +38,6 @@ class ShopPage extends StatelessWidget {
   );
 }
 
-//class HomeAppBar extends StatefulWidget {
-//  @override
-//  State createState() => HomeAppBarState();
-//}
-//
-//class HomeAppBarState extends State<HomeAppBar> {
-//  @override
-//  Widget build(BuildContext context) {
-//    return null;
-//  }
-//}
 class ShopBody extends StatefulWidget {
   @override
   State createState() => ShopBodyState();

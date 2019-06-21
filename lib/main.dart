@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tonal/router.dart';
+import 'package:tonal/about.dart';
 import 'package:tonal/carts.dart';
 import 'package:tonal/category.dart';
 import 'package:tonal/global.dart';
@@ -10,6 +12,7 @@ import 'package:tonal/mine.dart';
 import 'package:tonal/myShop.dart';
 import 'package:tonal/prod.dart';
 import 'package:tonal/searchResult.dart';
+import 'package:tonal/shop.dart';
 
 void main() {
   if (Platform.isAndroid) {
@@ -29,14 +32,7 @@ class MyApp extends StatelessWidget {
           primaryColor: Colors.white,
           textSelectionColor: Colors.red,
         ),
-        routes: {
-          //路由
-          'minePage': (BuildContext context) => MinePage(),
-          'cartsPage': (BuildContext context) => CartsPage(),
-          'categoryPage': (BuildContext context) => CategoryPage(),
-          'searchPage': (BuildContext context) => SearchResultPage(),
-          'prodPage': (BuildContext context) => ProdPage(),
-        },
+        routes: Router.router,
         home: MainPage());
   }
 }
