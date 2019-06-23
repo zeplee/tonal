@@ -90,6 +90,8 @@ class MainPageState extends State<MainPage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         fixedColor: Colors.blueAccent,
+        selectedFontSize: 13.0,
+        unselectedFontSize: 13.0,
         type: BottomNavigationBarType.fixed,
         items: mainNaviItems,
         onTap: onItemSelect,
@@ -111,6 +113,7 @@ class MainPageState extends State<MainPage> {
                     title: Text('店铺'),
                   ));
             }
+            currentIndex = 0;
           });
         },
       ),

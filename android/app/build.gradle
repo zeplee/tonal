@@ -36,7 +36,7 @@ android {
 
     buildTypes {
         debug {
-            ndk { abiFilters "armeabi-v7a", "x86" }
+//            ndk { abiFilters "armeabi-v7a", "x86" }
             signingConfig signingConfigs.debug
         }
         release {
