@@ -1,7 +1,8 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 
 class CategoryPage extends StatelessWidget {
   @override
@@ -35,10 +36,11 @@ class CategoryBodyState extends State<CategoryBody> {
   }
 
   loadData() async {
-    String url = "https://jsonplaceholder.typicode.com/posts";
-    http.Response response = await http.get(url);
+    var response =
+        await Dio().get<String>("https://jsonplaceholder.typicode.com/posts");
     setState(() {
-      _datas = json.decode(response.body);
+      _datas = json.decode(response.data);
+      _datas;
     });
   }
 
@@ -77,7 +79,6 @@ class CategoryListItem extends StatefulWidget {
 }
 
 class CategoryItemState extends State<CategoryListItem> {
-  var _isFavorite = false;
 
   @override
   Widget build(BuildContext context) => ListTile(
