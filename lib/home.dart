@@ -6,11 +6,9 @@ class HomePage extends StatefulWidget {
   State<StatefulWidget> createState() => HomePageState();
 }
 
-class HomePageState extends State<HomePage>
-    with SingleTickerProviderStateMixin {
+class HomePageState extends State<HomePage> {
   List<String> tabTitles;
   List<Widget> tabBodys;
-  TabController controller;
 
   @override
   void initState() {
@@ -37,16 +35,6 @@ class HomePageState extends State<HomePage>
       HomeBody(),
       HomeBody(),
     ];
-    controller = TabController(
-      length: tabTitles.length,
-      vsync: this,
-    );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    controller.dispose();
   }
 
   @override
@@ -59,10 +47,13 @@ class HomePageState extends State<HomePage>
 //        fit: BoxFit.cover,
 //      )),
 //      child:
-      Scaffold(
+      DefaultTabController(
+        length: tabTitles.length,
+        child: Scaffold(
 //          backgroundColor: Colors.transparent,
-          appBar: appBar(context),
-          body: TabBarView(controller: controller, children: tabBodys));
+            appBar: appBar(context),
+            body: TabBarView(children: tabBodys)),
+      );
 
 //  );
 
@@ -92,6 +83,7 @@ class HomePageState extends State<HomePage>
           decoration: InputDecoration(
             hintText: "小苹果",
             border: OutlineInputBorder(
+//                border: InputBorder.none,
               borderRadius: BorderRadius.circular(15.0),
             ),
           ),
@@ -104,14 +96,13 @@ class HomePageState extends State<HomePage>
 //                  builder: (BuildContext context) => CartsPage())),
           ),
         ],
-        bottom: tabView(),
+        bottom: tabBar(),
 //      ),
 //      preferredSize: Size.fromHeight(40.0)
       );
 
-  tabView() => TabBar(
+  tabBar() => TabBar(
       isScrollable: true,
-      controller: controller,
       labelStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
       labelColor: Colors.blueAccent,
       unselectedLabelColor: Colors.black45,

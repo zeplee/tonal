@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tonal/about.dart';
 import 'package:tonal/carts.dart';
 import 'package:tonal/category.dart';
+import 'package:tonal/greet.dart';
 import 'package:tonal/mine.dart';
 import 'package:tonal/settings.dart';
 import 'package:tonal/shop.dart';
@@ -12,6 +13,7 @@ import 'search_result.dart';
 class Router {
   static Map<String, WidgetBuilder> router = {
     //路由
+    'greetPage': (BuildContext context) => GreetPage(),
     'minePage': (BuildContext context) => MinePage(),
     'cartsPage': (BuildContext context) => CartsPage(),
     'categoryPage': (BuildContext context) => CategoryPage(),

@@ -78,52 +78,48 @@ class MainPageState extends State<MainPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      //IndexedStack会初始化所有的页面，并且保存状态
-      body: IndexedStack(
-        index: currentIndex,
-        children: mainPages,
-      ),
-      //每次都会重建页面
+  Widget build(BuildContext context) => Scaffold(
+        //IndexedStack会初始化所有的页面，并且保存状态
+        body: IndexedStack(
+          index: currentIndex,
+          children: mainPages,
+        ),
+        //每次都会重建页面
 //      body: mainPages[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        fixedColor: Colors.blueAccent,
-        selectedFontSize: 13.0,
-        unselectedFontSize: 13.0,
-        type: BottomNavigationBarType.fixed,
-        items: mainNaviItems,
-        onTap: onItemSelect,
-      ),
-      floatingActionButton: FloatingActionButton(
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-        onPressed: () {
-          setState(() {
-            if (mainNaviItems.length == 5) {
-              mainPages.removeAt(2);
-              mainNaviItems.removeAt(2);
-            } else {
-              mainPages.insert(2, MyShopPage());
-              mainNaviItems.insert(
-                  2,
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.shop),
-                    title: Text('店铺'),
-                  ));
-            }
-            currentIndex = 0;
-          });
-        },
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-    );
-  }
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: currentIndex,
+          fixedColor: Colors.blueAccent,
+          selectedFontSize: 13.0,
+          unselectedFontSize: 13.0,
+          type: BottomNavigationBarType.fixed,
+          items: mainNaviItems,
+          onTap: onItemSelect,
+        ),
+        floatingActionButton: FloatingActionButton(
+          tooltip: 'Increment',
+          child: Icon(Icons.add),
+          onPressed: () {
+            setState(() {
+              if (mainNaviItems.length == 5) {
+                mainPages.removeAt(2);
+                mainNaviItems.removeAt(2);
+              } else {
+                mainPages.insert(2, MyShopPage());
+                mainNaviItems.insert(
+                    2,
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.shop),
+                      title: Text('店铺'),
+                    ));
+              }
+              currentIndex = 0;
+            });
+          },
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      );
 
-  void onItemSelect(int index) {
-    setState(() {
-      currentIndex = index;
-    });
-  }
+  void onItemSelect(int index) => setState(() {
+        currentIndex = index;
+      });
 }

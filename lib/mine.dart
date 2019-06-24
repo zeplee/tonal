@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class MinePage extends StatefulWidget {
@@ -8,12 +10,14 @@ class MinePage extends StatefulWidget {
 class MinePageState extends State<MinePage> {
   @override
   void initState() {
+    HttpClient();
     super.initState();
   }
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Text('MinePage'),
+          centerTitle: true,
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.import_contacts),
