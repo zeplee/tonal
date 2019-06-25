@@ -1,9 +1,5 @@
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:tonal/entity/category_entity.dart';
+import 'package:flutter/material.dart';
 
 class CategoryPage extends StatelessWidget {
   @override
