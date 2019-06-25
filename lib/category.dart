@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:tonal/entity/category_entity.dart';
 
 class CategoryPage extends StatelessWidget {
   @override
@@ -30,22 +31,16 @@ class CategoryBodyState extends State<CategoryBody> {
     loadData();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
   loadData() async {
     var response =
-        await Dio().get<String>("https://jsonplaceholder.typicode.com/posts");
+        await Dio().get("https://jsonplaceholder.typicode.com/posts");
     setState(() {
-      _datas = json.decode(response.data);
-      _datas;
+      _datas = response.data;
     });
   }
 
   @override
-  Widget build(BuildContext context) => _datas.length == 0
+  Widget build(BuildContext context) => _datas.isEmpty
       ? Center(child: CircularProgressIndicator()) //开始数量为0时，显示转圈进度
       : ListView.builder(
           padding: const EdgeInsets.all(16.0),
@@ -79,7 +74,6 @@ class CategoryListItem extends StatefulWidget {
 }
 
 class CategoryItemState extends State<CategoryListItem> {
-
   @override
   Widget build(BuildContext context) => ListTile(
       title: Text(

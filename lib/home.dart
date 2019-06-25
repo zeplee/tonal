@@ -114,7 +114,10 @@ class HomePageState extends State<HomePage> {
       tabs: tabTitles
           .map((item) => Tab(
                 text: tabTitles.indexOf(item).isOdd ? null : item,
-                icon: tabTitles.indexOf(item).isOdd ? FlutterLogo() : null,
+                icon: tabTitles.indexOf(item).isOdd
+                    ? Image.network(
+                        'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg')
+                    : null,
               ))
           .toList());
 }
@@ -125,11 +128,11 @@ class HomeBody extends StatefulWidget {
 }
 
 class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
-  final _datas = <WordPair>[];
-
-  //保存页面
+  //保存tab页面状态
   @override
   bool get wantKeepAlive => true;
+
+  final _datas = <WordPair>[];
 
   @override
   void initState() {
