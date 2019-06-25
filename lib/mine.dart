@@ -13,6 +13,7 @@ class MinePageState extends State<MinePage> {
     HttpClient();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -21,11 +22,11 @@ class MinePageState extends State<MinePage> {
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.import_contacts),
-              onPressed: () => Navigator.of(context).pushNamed('aboutPage'),
+              onPressed: () => Navigator.of(context).pushNamed('/aboutPage'),
             ),
             IconButton(
               icon: Icon(Icons.settings),
-              onPressed: () => Navigator.of(context).pushNamed('settingsPage'),
+              onPressed: () => Navigator.of(context).pushNamed('/settingsPage'),
             ),
           ],
         ),

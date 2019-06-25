@@ -39,7 +39,10 @@ class ProdBody extends StatelessWidget {
                       content: Text('Yay! A SnackBar!'),
                       action: SnackBarAction(
                         label: 'Undo',
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, '/homePage', null);
+                        },
                       ),
                     ));
                     Toast.show(context, '点击了RaisedButton');

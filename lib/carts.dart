@@ -6,7 +6,7 @@ class CartsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text('myshop'),
+          title: Text('carts'),
         ),
         body: CartsBody(),
       );

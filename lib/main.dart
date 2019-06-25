@@ -5,10 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:tonal/carts.dart';
 import 'package:tonal/category.dart';
 import 'package:tonal/global.dart';
+import 'package:tonal/helper/router.dart';
 import 'package:tonal/home.dart';
 import 'package:tonal/mine.dart';
 import 'package:tonal/myshop.dart';
-import 'package:tonal/router.dart';
 
 void main() {
   if (Platform.isAndroid) {
@@ -24,11 +24,38 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Global.init(context);
     return MaterialApp(
+        title: 'tonal',
+        showSemanticsDebugger: false,
+        color: Colors.white,
         theme: ThemeData(
+          pageTransitionsTheme: PageTransitionsTheme(builders: {
+            TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+            TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
+          }),
           primaryColor: Colors.white,
           textSelectionColor: Colors.red,
         ),
         routes: Router.router,
+        initialRoute: '/greetPage',
+        onGenerateRoute: (setting) => new PageRouteBuilder(
+            pageBuilder: (BuildContext context, _, __) {
+              //这里为返回的Widget
+              return HomePage();
+            },
+            opaque: false,
+            //跳转动画
+            transitionDuration: new Duration(milliseconds: 200),
+            transitionsBuilder:
+                (___, Animation<double> animation, ____, Widget child) {
+              return new FadeTransition(
+                opacity: animation,
+                child: new ScaleTransition(
+                  scale: new Tween<double>(begin: 0.5, end: 1.0)
+                      .animate(animation),
+                  child: child,
+                ),
+              );
+            }),
         home: MainPage());
   }
 }
@@ -93,7 +120,7 @@ class MainPageState extends State<MainPage> {
           unselectedFontSize: 13.0,
           type: BottomNavigationBarType.fixed,
           items: mainNaviItems,
-          onTap: onItemSelect,
+          onTap: onNaviItemSelect,
         ),
         floatingActionButton: FloatingActionButton(
           tooltip: 'Increment',
@@ -119,7 +146,7 @@ class MainPageState extends State<MainPage> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       );
 
-  void onItemSelect(int index) => setState(() {
+  void onNaviItemSelect(int index) => setState(() {
         currentIndex = index;
       });
 }

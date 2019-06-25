@@ -77,6 +77,6 @@ class CategoryItemState extends State<CategoryListItem> {
         style: TextStyle(fontSize: 10.0),
       ),
       onTap: () {
-        Navigator.of(context).pushNamed('prodPage');
+        Navigator.of(context).pushNamed('/prodPage');
       });
 }

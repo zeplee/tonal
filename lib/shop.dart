@@ -5,37 +5,38 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ShopPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: PreferredSize(
-        child: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.mms),
-            tooltip: 'Navigation menu',
-            onPressed: () =>
-                Navigator.of(context).pushNamed('categoryPage'),
-          ),
-          title: TextField(
-              onSubmitted: (String text) {
-                if (text.isNotEmpty) {
-                  Navigator.of(context).pushNamed('searchPage');
-                }
-              },
-              decoration: InputDecoration(hintText: "search hint")),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.face),
-              onPressed: () => Navigator.of(context).pushNamed('cartsPage'),
+        appBar: PreferredSize(
+            child: AppBar(
+              leading: IconButton(
+                icon: Icon(Icons.mms),
+                tooltip: 'Navigation menu',
+                onPressed: () =>
+                    Navigator.of(context).pushNamed('/categoryPage'),
+              ),
+              title: TextField(
+                  onSubmitted: (String text) {
+                    if (text.isNotEmpty) {
+                      Navigator.of(context).pushNamed('/searchPage');
+                    }
+                  },
+                  decoration: InputDecoration(hintText: "search hint")),
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.face),
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed('/cartsPage'),
 //                  Navigator.of(context).push(MaterialPageRoute(
 //                  builder: (BuildContext context) => CartsPage())),
+                ),
+                IconButton(
+                  icon: Icon(Icons.list),
+                  onPressed: () => Navigator.of(context).pushNamed('/minePage'),
+                ),
+              ],
             ),
-            IconButton(
-              icon: Icon(Icons.list),
-              onPressed: () => Navigator.of(context).pushNamed('minePage'),
-            ),
-          ],
-        ),
-        preferredSize: Size.fromHeight(40.0)),
-    body: ShopBody(),
-  );
+            preferredSize: Size.fromHeight(40.0)),
+        body: ShopBody(),
+      );
 }
 
 class ShopBody extends StatefulWidget {
@@ -55,7 +56,7 @@ class ShopBodyState extends State<ShopBody> {
 
   @override
   Widget build(BuildContext context) => ListView.builder(
-    //使用builder有自动回收功能
+      //使用builder有自动回收功能
       padding: const EdgeInsets.all(16.0),
 //      itemCount: _datas.length,//有分割线的话得好好算算这个数量，或者用另一种办法，将分割线放入item中，位置就对了，但是没这个酷炫
       itemBuilder: (context, i) {
@@ -93,47 +94,47 @@ class ShopBodyListItemState extends State<ShopBodyListItem> {
 
   @override
   Widget build(BuildContext context) => Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: <Widget>[
-      Text('Column One', style: Theme.of(context).primaryTextTheme.title),
-      IconButton(
-        icon: Icon(Icons.backspace),
-        onPressed: () {
-          _saveSp();
-        },
-      ),
-      Center(
-        child: TextField(
-          onSubmitted: (String text) {
-            setState(() {
-              if (!RegExp(
-                  r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
-                  .hasMatch(text)) {
-                _errorText = 'Error: This is not an email';
-              } else {
-                _errorText = null;
-              }
-            });
-          },
-          decoration: InputDecoration(
-              hintText: "This is a hint", errorText: _errorText),
-        ),
-      ),
-      ListTile(
-          title: Text(
-            widget.data.asPascalCase,
-            style: TextStyle(fontSize: 10.0),
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text('Column One', style: Theme.of(context).primaryTextTheme.title),
+          IconButton(
+            icon: Icon(Icons.backspace),
+            onPressed: () {
+              _saveSp();
+            },
           ),
-          trailing: IconButton(
-            icon:
-            Icon(_isFavorite ? Icons.favorite_border : Icons.favorite),
-            onPressed: () => setState(() => _isFavorite = !_isFavorite),
+          Center(
+            child: TextField(
+              onSubmitted: (String text) {
+                setState(() {
+                  if (!RegExp(
+                          r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+                      .hasMatch(text)) {
+                    _errorText = 'Error: This is not an email';
+                  } else {
+                    _errorText = null;
+                  }
+                });
+              },
+              decoration: InputDecoration(
+                  hintText: "This is a hint", errorText: _errorText),
+            ),
           ),
-          onTap: () {
-            print("tap");
-          })
-    ],
-  );
+          ListTile(
+              title: Text(
+                widget.data.asPascalCase,
+                style: TextStyle(fontSize: 10.0),
+              ),
+              trailing: IconButton(
+                icon:
+                    Icon(_isFavorite ? Icons.favorite_border : Icons.favorite),
+                onPressed: () => setState(() => _isFavorite = !_isFavorite),
+              ),
+              onTap: () {
+                print("tap");
+              })
+        ],
+      );
 
   _saveSp() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

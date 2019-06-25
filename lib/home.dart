@@ -71,13 +71,13 @@ class HomePageState extends State<HomePage> {
         leading: IconButton(
           icon: Icon(Icons.mms),
           tooltip: 'Navigation menu',
-          onPressed: () => Navigator.of(context).pushNamed('categoryPage'),
+          onPressed: () => Navigator.of(context).pushNamed('/categoryPage'),
         ),
         title: TextField(
           textAlign: TextAlign.center,
           onSubmitted: (String text) {
             if (text.isNotEmpty) {
-              Navigator.of(context).pushNamed('searchPage');
+              Navigator.of(context).pushNamed('/searchPage');
             }
           },
           decoration: InputDecoration(
@@ -91,9 +91,7 @@ class HomePageState extends State<HomePage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.face),
-            onPressed: () => Navigator.of(context).pushNamed('cartsPage'),
-//                  Navigator.of(context).push(MaterialPageRoute(
-//                  builder: (BuildContext context) => CartsPage())),
+            onPressed: () => Navigator.pushNamed(context, '/cartsPage'),
           ),
         ],
         bottom: tabBar(),
@@ -198,7 +196,7 @@ class HomeBodyListItem extends StatelessWidget {
                 style: TextStyle(fontSize: 10.0),
               ),
               onTap: () {
-                Navigator.of(context).pushNamed('shopPage');
+                Navigator.of(context).pushNamed('/shopPage');
               })
         ],
       );
