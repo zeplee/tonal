@@ -40,8 +40,9 @@ class ProdBody extends StatelessWidget {
                       action: SnackBarAction(
                         label: 'Undo',
                         onPressed: () {
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, '/homePage', null);
+                          //todo
+                          Navigator.popUntil(
+                              context, ModalRoute.withName("/mainPage"));
                         },
                       ),
                     ));

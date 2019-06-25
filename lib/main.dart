@@ -126,6 +126,9 @@ class MainPageState extends State<MainPage> {
           tooltip: 'Increment',
           child: Icon(Icons.add),
           onPressed: () {
+            //重新创建首页
+//            Navigator.pushNamedAndRemoveUntil(
+//                context, '/mainPage', (Route route) => false);
             setState(() {
               if (mainNaviItems.length == 5) {
                 mainPages.removeAt(2);

@@ -4,6 +4,7 @@ import 'package:tonal/carts.dart';
 import 'package:tonal/category.dart';
 import 'package:tonal/greet.dart';
 import 'package:tonal/home.dart';
+import 'package:tonal/main.dart';
 import 'package:tonal/mine.dart';
 import 'package:tonal/prod.dart';
 import 'package:tonal/search_result.dart';
@@ -17,6 +18,7 @@ class Router {
 //  Navigator.push(context, MyPageRouteBuilder(CartsPage()));
     //路由
     '/greetPage': (BuildContext context) => GreetPage(),
+    '/mainPage': (BuildContext context) => MainPage(),
     '/minePage': (BuildContext context) => MinePage(),
     '/homePage': (BuildContext context) => HomePage(),
     '/cartsPage': (BuildContext context) => CartsPage(),

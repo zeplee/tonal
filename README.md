@@ -9,4 +9,4 @@ heroTag: 'fda',
 #顶部有一个listview，那么就会有问题，可能是listview里面默认加了一个padding
 padding: EdgeInsets.all(0.0)
 DefaultTabController与TabController区别：https://www.jianshu.com/p/fbd1d0e22f9c
-router:https://blog.csdn.net/weixin_34999505/article/details/86760606
+router:https://blog.csdn.net/weixin_34999505/article/details/86760606 https://juejin.im/post/5c7d19f751882555a8223602
