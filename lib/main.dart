@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tonal/carts.dart';
-import 'package:tonal/category.dart';
-import 'package:tonal/global.dart';
+import 'package:tonal/helper/global.dart';
 import 'package:tonal/helper/route_helper.dart';
-import 'package:tonal/home.dart';
-import 'package:tonal/mine.dart';
-import 'package:tonal/myshop.dart';
+import 'package:tonal/page/carts.dart';
+import 'package:tonal/page/category.dart';
+import 'package:tonal/page/home.dart';
+import 'package:tonal/page/mine.dart';
+import 'package:tonal/page/myshop.dart';
 
 void main() {
   if (Platform.isAndroid) {

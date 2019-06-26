@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:tonal/search.dart';
+import 'package:tonal/page/search.dart';
 
 class CategoryPage extends StatelessWidget {
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tonal/toast.dart';
+import 'package:tonal/widget/toast.dart';
 
 class ProdPage extends StatelessWidget {
   @override

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:tonal/about.dart';
-import 'package:tonal/carts.dart';
-import 'package:tonal/category.dart';
-import 'package:tonal/greet.dart';
-import 'package:tonal/home.dart';
-import 'package:tonal/login.dart';
 import 'package:tonal/main.dart';
-import 'package:tonal/mine.dart';
-import 'package:tonal/prod.dart';
-import 'package:tonal/search_result.dart';
-import 'package:tonal/settings.dart';
-import 'package:tonal/shop.dart';
+import 'package:tonal/page/about.dart';
+import 'package:tonal/page/carts.dart';
+import 'package:tonal/page/category.dart';
+import 'package:tonal/page/greet.dart';
+import 'package:tonal/page/home.dart';
+import 'package:tonal/page/login.dart';
+import 'package:tonal/page/mine.dart';
+import 'package:tonal/page/prod.dart';
+import 'package:tonal/page/search_result.dart';
+import 'package:tonal/page/settings.dart';
+import 'package:tonal/page/shop.dart';
 
 class RouteHelper {
   static Map<String, WidgetBuilder> routes = {
