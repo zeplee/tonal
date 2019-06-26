@@ -36,11 +36,10 @@ class ProdBody extends StatelessWidget {
                   child: Text('Hey'),
                   onPressed: () {
                     Scaffold.of(context).showSnackBar(SnackBar(
-                      content: Text('Yay! A SnackBar!'),
+                      content: Text('点击了RaisedButton'),
                       action: SnackBarAction(
-                        label: 'Undo',
+                        label: '取消',
                         onPressed: () {
-                          //todo
                           Navigator.popUntil(
                               context, ModalRoute.withName("/mainPage"));
                         },

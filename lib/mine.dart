@@ -25,6 +25,10 @@ class MinePageState extends State<MinePage> {
               onPressed: () => Navigator.of(context).pushNamed('/aboutPage'),
             ),
             IconButton(
+              icon: Icon(Icons.supervised_user_circle),
+              onPressed: () => Navigator.of(context).pushNamed('/loginPage'),
+            ),
+            IconButton(
               icon: Icon(Icons.settings),
               onPressed: () => Navigator.of(context).pushNamed('/settingsPage'),
             ),

@@ -4,6 +4,7 @@ import 'package:tonal/carts.dart';
 import 'package:tonal/category.dart';
 import 'package:tonal/greet.dart';
 import 'package:tonal/home.dart';
+import 'package:tonal/login.dart';
 import 'package:tonal/main.dart';
 import 'package:tonal/mine.dart';
 import 'package:tonal/prod.dart';
@@ -11,11 +12,8 @@ import 'package:tonal/search_result.dart';
 import 'package:tonal/settings.dart';
 import 'package:tonal/shop.dart';
 
-class Router {
-  static Map<String, WidgetBuilder> router = {
-//  Navigator.push(context,
-//  MaterialPageRoute(builder: (BuildContext context) => CartsPage()));
-//  Navigator.push(context, MyPageRouteBuilder(CartsPage()));
+class RouteHelper {
+  static Map<String, WidgetBuilder> routes = {
     //路由
     '/greetPage': (BuildContext context) => GreetPage(),
     '/mainPage': (BuildContext context) => MainPage(),
@@ -28,11 +26,13 @@ class Router {
     '/shopPage': (BuildContext context) => ShopPage(),
     '/aboutPage': (BuildContext context) => AboutPage(),
     '/settingsPage': (BuildContext context) => SettingsPage(),
+    '/loginPage': (BuildContext context) => LoginPage(),
   };
 }
 
-class MyPageRouteBuilder extends PageRouteBuilder {
+//    Navigator.push(context, MyPageRouteBuilder(CartsPage()));
+class CustomPageRouteBuilder extends PageRouteBuilder {
   final Widget widget;
 
-  MyPageRouteBuilder(this.widget);
+  CustomPageRouteBuilder(this.widget);
 }

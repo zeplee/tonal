@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:tonal/search.dart';
 
 class CategoryPage extends StatelessWidget {
   @override
@@ -7,6 +8,12 @@ class CategoryPage extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           title: Text('CategoryPage'),
+          actions: <Widget>[
+            IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () => showSearch(
+                    context: context, delegate: CustomSearchDelegate())),
+          ],
         ),
         body: CategoryBody(),
       );
