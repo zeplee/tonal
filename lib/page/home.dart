@@ -98,12 +98,18 @@ class HomePageState extends State<HomePage> {
 //      ),
 //      preferredSize: Size.fromHeight(40.0)
       );
-
+  var _index;
   tabBar() => TabBar(
+      onTap: (int index) {
+        setState(() {
+          _index = index;
+        });
+      },
       isScrollable: true,
       labelStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
       labelColor: Colors.blueAccent,
       unselectedLabelColor: Colors.black45,
+      labelPadding: EdgeInsets.only(left: 20, right: 20, top: 10),
       indicatorColor: Colors.blueAccent,
       indicatorSize: TabBarIndicatorSize.tab,
       indicator: UnderlineTabIndicator(
@@ -113,8 +119,10 @@ class HomePageState extends State<HomePage> {
           .map((item) => Tab(
                 text: tabTitles.indexOf(item).isOdd ? null : item,
                 icon: tabTitles.indexOf(item).isOdd
-                    ? Image.network(
-                        'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg')
+                    ? tabTitles.indexOf(item) == _index
+                        ? Image.network(
+                            'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg')
+                        : FlutterLogo()
                     : null,
               ))
           .toList());
