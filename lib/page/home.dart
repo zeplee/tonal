@@ -98,11 +98,11 @@ class HomePageState extends State<HomePage> {
 //      ),
 //      preferredSize: Size.fromHeight(40.0)
       );
-  var _index;
+  var _tabCurIndex;
   tabBar() => TabBar(
       onTap: (int index) {
         setState(() {
-          _index = index;
+          _tabCurIndex = index;
         });
       },
       isScrollable: true,
@@ -119,7 +119,7 @@ class HomePageState extends State<HomePage> {
           .map((item) => Tab(
                 text: tabTitles.indexOf(item).isOdd ? null : item,
                 icon: tabTitles.indexOf(item).isOdd
-                    ? tabTitles.indexOf(item) == _index
+                    ? tabTitles.indexOf(item) == _tabCurIndex
                         ? Image.network(
                             'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg')
                         : FlutterLogo()

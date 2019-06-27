@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         color: Colors.white,
         theme: ThemeData(
           pageTransitionsTheme: PageTransitionsTheme(builders: {
-            TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
             TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
           }),
           primaryColor: Colors.white,
