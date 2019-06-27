@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:tonal/entity/user_entity.dart';
 import 'package:tonal/helper/route_helper.dart';
 import 'package:tonal/widget/toast.dart';
 
@@ -37,7 +40,9 @@ class ProdBody extends StatelessWidget {
                   child: Text('Hey'),
                   onPressed: () {
                     Scaffold.of(context).showSnackBar(SnackBar(
-                      content: Text('点击了RaisedButton'),
+                      content: Text(UserEntity.fromJson(json.decode(
+                              '{"version":"1.0","timestamp":"190627T153330.389Z","status":0,"errorMsg":"全部成功","elapsed":0,"trackId":null,"data":"第二件0元起"}'))
+                          .toString()),
                       action: SnackBarAction(
                         label: '取消',
                         onPressed: () {
