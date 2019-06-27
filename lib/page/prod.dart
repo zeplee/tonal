@@ -42,7 +42,7 @@ class ProdBody extends StatelessWidget {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text(UserEntity.fromJson(json.decode(
                               '{"version":"1.0","timestamp":"190627T153330.389Z","status":0,"errorMsg":"全部成功","elapsed":0,"trackId":null,"data":"第二件0元起"}'))
-                          .toString()),
+                          .version),
                       action: SnackBarAction(
                         label: '取消',
                         onPressed: () {
