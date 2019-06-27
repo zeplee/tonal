@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tonal/helper/route_helper.dart';
 import 'package:tonal/widget/toast.dart';
 
 class ProdPage extends StatelessWidget {
@@ -40,8 +41,8 @@ class ProdBody extends StatelessWidget {
                       action: SnackBarAction(
                         label: '取消',
                         onPressed: () {
-                          Navigator.popUntil(
-                              context, ModalRoute.withName("/mainPage"));
+                          Navigator.popUntil(context,
+                              ModalRoute.withName(RouteHelper.mainPage));
                         },
                       ),
                     ));

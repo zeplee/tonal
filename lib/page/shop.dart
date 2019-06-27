@@ -1,6 +1,7 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tonal/helper/route_helper.dart';
 
 class ShopPage extends StatelessWidget {
   @override
@@ -11,12 +12,12 @@ class ShopPage extends StatelessWidget {
                 icon: Icon(Icons.mms),
                 tooltip: 'Navigation menu',
                 onPressed: () =>
-                    Navigator.of(context).pushNamed('/categoryPage'),
+                    Navigator.of(context).pushNamed(RouteHelper.categoryPage),
               ),
               title: TextField(
                   onSubmitted: (String text) {
                     if (text.isNotEmpty) {
-                      Navigator.of(context).pushNamed('/searchPage');
+                      Navigator.of(context).pushNamed(RouteHelper.searchPage);
                     }
                   },
                   decoration: InputDecoration(hintText: "search hint")),
@@ -24,13 +25,14 @@ class ShopPage extends StatelessWidget {
                 IconButton(
                   icon: Icon(Icons.face),
                   onPressed: () =>
-                      Navigator.of(context).pushNamed('/cartsPage'),
+                      Navigator.of(context).pushNamed(RouteHelper.cartsPage),
 //                  Navigator.of(context).push(MaterialPageRoute(
 //                  builder: (BuildContext context) => CartsPage())),
                 ),
                 IconButton(
                   icon: Icon(Icons.list),
-                  onPressed: () => Navigator.of(context).pushNamed('/minePage'),
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed(RouteHelper.greetPage),
                 ),
               ],
             ),

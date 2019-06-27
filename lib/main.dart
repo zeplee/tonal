@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           textSelectionColor: Colors.red,
         ),
         routes: RouteHelper.routes,
-        initialRoute: '/greetPage',
+        initialRoute: RouteHelper.greetPage,
 //        onGenerateRoute: (setting) => new PageRouteBuilder(
 //            pageBuilder: (BuildContext context, _, __) {
 //              //这里为返回的Widget

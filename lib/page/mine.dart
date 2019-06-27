@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:tonal/helper/route_helper.dart';
 
 class MinePage extends StatefulWidget {
   @override
@@ -22,15 +23,18 @@ class MinePageState extends State<MinePage> {
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.import_contacts),
-              onPressed: () => Navigator.of(context).pushNamed('/aboutPage'),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(RouteHelper.aboutPage),
             ),
             IconButton(
               icon: Icon(Icons.supervised_user_circle),
-              onPressed: () => Navigator.of(context).pushNamed('/loginPage'),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(RouteHelper.loginPage),
             ),
             IconButton(
               icon: Icon(Icons.settings),
-              onPressed: () => Navigator.of(context).pushNamed('/settingsPage'),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(RouteHelper.settingsPage),
             ),
           ],
         ),

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:tonal/helper/route_helper.dart';
 import 'package:tonal/page/search.dart';
 
 class CategoryPage extends StatelessWidget {
@@ -84,6 +85,6 @@ class CategoryItemState extends State<CategoryListItem> {
         style: TextStyle(fontSize: 10.0),
       ),
       onTap: () {
-        Navigator.of(context).pushNamed('/prodPage');
+        Navigator.of(context).pushNamed(RouteHelper.prodPage);
       });
 }

@@ -1,5 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:tonal/helper/route_helper.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -71,13 +72,14 @@ class HomePageState extends State<HomePage> {
         leading: IconButton(
           icon: Icon(Icons.mms),
           tooltip: 'Navigation menu',
-          onPressed: () => Navigator.of(context).pushNamed('/categoryPage'),
+          onPressed: () =>
+              Navigator.of(context).pushNamed(RouteHelper.categoryPage),
         ),
         title: TextField(
           textAlign: TextAlign.center,
           onSubmitted: (String text) {
             if (text.isNotEmpty) {
-              Navigator.of(context).pushNamed('/searchPage');
+              Navigator.of(context).pushNamed(RouteHelper.searchPage);
             }
           },
           decoration: InputDecoration(
@@ -91,14 +93,17 @@ class HomePageState extends State<HomePage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.face),
-            onPressed: () => Navigator.pushNamed(context, '/cartsPage'),
+            onPressed: () =>
+                Navigator.pushNamed(context, RouteHelper.cartsPage),
           ),
         ],
         bottom: tabBar(),
 //      ),
 //      preferredSize: Size.fromHeight(40.0)
       );
+
   var _tabCurIndex;
+
   tabBar() => TabBar(
       onTap: (int index) {
         setState(() {
@@ -204,7 +209,7 @@ class HomeBodyListItem extends StatelessWidget {
                 style: TextStyle(fontSize: 10.0),
               ),
               onTap: () {
-                Navigator.of(context).pushNamed('/shopPage');
+                Navigator.of(context).pushNamed(RouteHelper.shopPage);
               })
         ],
       );
