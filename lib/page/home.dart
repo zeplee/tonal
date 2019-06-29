@@ -7,9 +7,11 @@ class HomePage extends StatefulWidget {
   State<StatefulWidget> createState() => HomePageState();
 }
 
-class HomePageState extends State<HomePage> {
+class HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   List<String> tabTitles;
   List<Widget> tabBodys;
+  TabController controller;
 
   @override
   void initState() {
@@ -36,6 +38,22 @@ class HomePageState extends State<HomePage> {
       HomeBody(),
       HomeBody(),
     ];
+    controller = TabController(
+      length: tabTitles.length,
+      vsync: this,
+    );
+    VoidCallback listener = () {
+      setState(() {
+        _tabCurIndex = controller.index;
+      });
+    };
+    controller.addListener(listener);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    controller.dispose();
   }
 
   @override
@@ -53,7 +71,7 @@ class HomePageState extends State<HomePage> {
         child: Scaffold(
 //          backgroundColor: Colors.transparent,
             appBar: appBar(context),
-            body: TabBarView(children: tabBodys)),
+            body: TabBarView(controller: controller, children: tabBodys)),
       );
 
 //  );
@@ -105,12 +123,13 @@ class HomePageState extends State<HomePage> {
   var _tabCurIndex;
 
   tabBar() => TabBar(
-      onTap: (int index) {
-        setState(() {
-          _tabCurIndex = index;
-        });
-      },
+//      onTap: (int index) {
+//        setState(() {
+//          _tabCurIndex = index;
+//        });
+//      },
       isScrollable: true,
+      controller: controller,
       labelStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
       labelColor: Colors.blueAccent,
       unselectedLabelColor: Colors.black45,
