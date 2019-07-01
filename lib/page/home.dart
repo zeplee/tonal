@@ -12,6 +12,7 @@ class HomePageState extends State<HomePage>
   List<String> tabTitles;
   List<Widget> tabBodys;
   TabController controller;
+  var _tabCurIndex;
 
   @override
   void initState() {
@@ -65,14 +66,10 @@ class HomePageState extends State<HomePage>
 //            'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg'),
 //        fit: BoxFit.cover,
 //      )),
-//      child:
-      DefaultTabController(
-        length: tabTitles.length,
-        child: Scaffold(
+      Scaffold(
 //          backgroundColor: Colors.transparent,
-            appBar: appBar(context),
-            body: TabBarView(controller: controller, children: tabBodys)),
-      );
+          appBar: appBar(context),
+          body: TabBarView(controller: controller, children: tabBodys));
 
 //  );
 
@@ -119,8 +116,6 @@ class HomePageState extends State<HomePage>
 //      ),
 //      preferredSize: Size.fromHeight(40.0)
       );
-
-  var _tabCurIndex;
 
   tabBar() => TabBar(
 //      onTap: (int index) {
