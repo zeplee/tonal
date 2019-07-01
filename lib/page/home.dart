@@ -11,7 +11,7 @@ class HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   List<String> tabTitles;
   List<Widget> tabBodys;
-  TabController controller;
+  TabController tabController;
   var _tabCurIndex;
 
   @override
@@ -39,22 +39,22 @@ class HomePageState extends State<HomePage>
       HomeBody(),
       HomeBody(),
     ];
-    controller = TabController(
-      length: tabTitles.length,
-      vsync: this,
-    );
-    VoidCallback listener = () {
-      setState(() {
-        _tabCurIndex = controller.index;
+    tabController = TabController(length: tabTitles.length, vsync: this)
+      ..addListener(() {
+        //点击tab时会触发两次监听-https://juejin.im/post/5c9c3323e51d45360d0064f0
+        if (tabController.index.toDouble() == tabController.animation.value) {
+          print(tabController.index);
+          setState(() {
+            _tabCurIndex = tabController.index;
+          });
+        }
       });
-    };
-    controller.addListener(listener);
   }
 
   @override
   void dispose() {
     super.dispose();
-    controller.dispose();
+    tabController.dispose();
   }
 
   @override
@@ -69,7 +69,7 @@ class HomePageState extends State<HomePage>
       Scaffold(
 //          backgroundColor: Colors.transparent,
           appBar: appBar(context),
-          body: TabBarView(controller: controller, children: tabBodys));
+          body: TabBarView(controller: tabController, children: tabBodys));
 
 //  );
 
@@ -124,7 +124,7 @@ class HomePageState extends State<HomePage>
 //        });
 //      },
       isScrollable: true,
-      controller: controller,
+      controller: tabController,
       labelStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
       labelColor: Colors.blueAccent,
       unselectedLabelColor: Colors.black45,
