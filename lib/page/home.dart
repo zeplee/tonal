@@ -188,7 +188,7 @@ class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
           //使用builder有自动回收功能
           slivers: <Widget>[
             HomeBodyTopWidget(),
-            tabBar(),
+            ceilingBar(),
             HomeBodyBottomWidget()
           ],
         ),
@@ -205,33 +205,36 @@ class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
     });
   }
 
-  tabBar() => SliverPersistentHeader(
+  ceilingBar() => SliverPersistentHeader(
       pinned: true, //是否固定在顶部
-      floating: true,
+      floating: false,
       delegate: _SliverAppBarDelegate(
-        minHeight: 50, //收起的高度
-        maxHeight: 50, //展开的最大高度
-        child: DefaultTabController(
+          minHeight: 50, //收起的高度
+          maxHeight: 100, //展开的最大高度
+          child: DefaultTabController(
+            initialIndex: 4,
             length: tabTitles.length,
-            child: TabBar(
-                isScrollable: true,
-                labelStyle:
-                    TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                labelColor: Colors.blueAccent,
-                unselectedLabelColor: Colors.black45,
-                labelPadding: EdgeInsets.only(left: 20, right: 20, top: 10),
-                indicatorColor: Colors.blueAccent,
-                indicatorSize: TabBarIndicatorSize.tab,
-                indicator: UnderlineTabIndicator(
-                    insets: EdgeInsets.only(left: 15, right: 15),
-                    borderSide:
-                        BorderSide(width: 4.0, color: Colors.blueAccent)),
-                tabs: tabTitles
-                    .map((item) => Tab(
-                          text: item,
-                        ))
-                    .toList())),
-      ));
+            child: Material(
+                color: Colors.pinkAccent,
+                child: TabBar(
+                    isScrollable: true,
+                    labelStyle:
+                        TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    labelColor: Colors.blueAccent,
+                    unselectedLabelColor: Colors.black45,
+                    labelPadding: EdgeInsets.only(left: 20, right: 20, top: 10),
+                    indicatorColor: Colors.blueAccent,
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    indicator: UnderlineTabIndicator(
+                        insets: EdgeInsets.only(left: 15, right: 15),
+                        borderSide:
+                            BorderSide(width: 4.0, color: Colors.blueAccent)),
+                    tabs: tabTitles
+                        .map((item) => Tab(
+                              text: item,
+                            ))
+                        .toList())),
+          )));
 }
 
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
