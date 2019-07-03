@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:tonal/helper/route_helper.dart';
@@ -158,39 +160,38 @@ class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
   bool get wantKeepAlive => true;
 
   final _datas = <WordPair>[];
+  List<String> tabTitles;
 
   @override
   void initState() {
     super.initState();
     //本地数据
     _datas.addAll(generateWordPairs().take(10));
+    tabTitles = [
+      "time1",
+      "time2",
+      "time3",
+      "time4",
+      "time5",
+      "time6",
+      "time7",
+      "time8",
+      "time9",
+    ];
   }
 
   @override
   Widget build(BuildContext context) => RefreshIndicator(
         //下拉刷新
-        child: ListView.builder(
-            //使用builder有自动回收功能
-            padding: const EdgeInsets.all(16.0),
-//      itemCount: _datas.length,//有分割线的话得好好算算这个数量，或者用另一种办法，将分割线放入item中，位置就对了，但是没这个酷炫
-            itemBuilder: (context, i) {
-              if (i.isOdd) return Divider();
-              final index = i ~/ 2; //item的真实位置
-              if (true) {
-                //无限列表
-                if (index >= _datas.length) {
-                  //绘制到结尾了
-                  _datas.addAll(generateWordPairs().take(10));
-                }
-                return HomeBodyListItem(index, _datas[index]);
-              } else {
-                //有限列表
-                if (index < _datas.length) {
-                  //如果不判断到话，会继续绘制null条目，因为这个不加itemCount的话是无限循环绘制；不判断也可以，加上itemCount属性
-                  return HomeBodyListItem(index, _datas[index]);
-                }
-              }
-            }),
+        child: CustomScrollView(
+//          physics: ScrollPhysics(),
+          //使用builder有自动回收功能
+          slivers: <Widget>[
+            HomeBodyTopWidget(),
+            tabBar(),
+            HomeBodyBottomWidget()
+          ],
+        ),
         onRefresh: refresh,
       );
 
@@ -203,6 +204,143 @@ class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
       });
     });
   }
+
+  tabBar() => SliverPersistentHeader(
+      pinned: true, //是否固定在顶部
+      floating: true,
+      delegate: _SliverAppBarDelegate(
+        minHeight: 50, //收起的高度
+        maxHeight: 50, //展开的最大高度
+        child: DefaultTabController(
+            length: tabTitles.length,
+            child: TabBar(
+                isScrollable: true,
+                labelStyle:
+                    TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                labelColor: Colors.blueAccent,
+                unselectedLabelColor: Colors.black45,
+                labelPadding: EdgeInsets.only(left: 20, right: 20, top: 10),
+                indicatorColor: Colors.blueAccent,
+                indicatorSize: TabBarIndicatorSize.tab,
+                indicator: UnderlineTabIndicator(
+                    insets: EdgeInsets.only(left: 15, right: 15),
+                    borderSide:
+                        BorderSide(width: 4.0, color: Colors.blueAccent)),
+                tabs: tabTitles
+                    .map((item) => Tab(
+                          text: item,
+                        ))
+                    .toList())),
+      ));
+}
+
+class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  _SliverAppBarDelegate({
+    @required this.minHeight,
+    @required this.maxHeight,
+    @required this.child,
+  });
+
+  final double minHeight;
+  final double maxHeight;
+  final Widget child;
+
+  @override
+  double get minExtent => minHeight;
+
+  @override
+  double get maxExtent => max(maxHeight, minHeight);
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return new SizedBox.expand(child: child);
+  }
+
+  @override
+  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
+    return maxHeight != oldDelegate.maxHeight ||
+        minHeight != oldDelegate.minHeight ||
+        child != oldDelegate.child;
+  }
+}
+
+class HomeBodyTopWidget extends StatefulWidget {
+  @override
+  State createState() => HomeBodyTopState();
+}
+
+class HomeBodyTopState extends State<HomeBodyTopWidget> {
+  final _datas = <WordPair>[];
+
+  @override
+  void initState() {
+    super.initState();
+    //本地数据
+    _datas.addAll(generateWordPairs().take(10));
+  }
+
+  @override
+  Widget build(BuildContext context) =>
+      SliverList(delegate: SliverChildBuilderDelegate(
+        (context, i) {
+          if (i.isOdd) return Divider();
+          final index = i ~/ 2; //item的真实位置
+          if (false) {
+            //无限列表
+            if (index >= _datas.length) {
+              //绘制到结尾了
+              _datas.addAll(generateWordPairs().take(10));
+            }
+            return HomeBodyListItem(index, _datas[index]);
+          } else {
+            //有限列表
+            if (index < _datas.length) {
+              //如果不判断到话，会继续绘制null条目，因为这个不加itemCount的话是无限循环绘制；不判断也可以，加上itemCount属性
+              return HomeBodyListItem(index, _datas[index]);
+            }
+          }
+        },
+      ));
+}
+
+class HomeBodyBottomWidget extends StatefulWidget {
+  @override
+  State createState() => HomeBodyBottomState();
+}
+
+class HomeBodyBottomState extends State<HomeBodyBottomWidget> {
+  final _datas = <WordPair>[];
+
+  @override
+  void initState() {
+    super.initState();
+    //本地数据
+    _datas.addAll(generateWordPairs().take(10));
+  }
+
+  @override
+  Widget build(BuildContext context) =>
+      SliverList(delegate: SliverChildBuilderDelegate(
+        (context, i) {
+          if (i.isOdd) return Divider();
+          final index = i ~/ 2; //item的真实位置
+          if (true) {
+            //无限列表
+            if (index >= _datas.length) {
+              //绘制到结尾了
+              _datas.addAll(generateWordPairs().take(10));
+            }
+            return HomeBodyListItem(index, _datas[index]);
+          } else {
+            //有限列表
+            if (index < _datas.length) {
+              //如果不判断到话，会继续绘制null条目，因为这个不加itemCount的话是无限循环绘制；不判断也可以，加上itemCount属性
+              return HomeBodyListItem(index, _datas[index]);
+            }
+          }
+        },
+      ));
 }
 
 class HomeBodyListItem extends StatelessWidget {
