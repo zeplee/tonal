@@ -210,7 +210,7 @@ class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
       floating: false,
       delegate: _SliverAppBarDelegate(
           minHeight: 50, //收起的高度
-          maxHeight: 100, //展开的最大高度
+          maxHeight: 60, //展开的最大高度
           child: DefaultTabController(
             initialIndex: 4,
             length: tabTitles.length,
@@ -218,8 +218,10 @@ class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
                 color: Colors.pinkAccent,
                 child: TabBar(
                     isScrollable: true,
-                    labelStyle:
+                    unselectedLabelStyle:
                         TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    labelStyle:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     labelColor: Colors.blueAccent,
                     unselectedLabelColor: Colors.black45,
                     labelPadding: EdgeInsets.only(left: 20, right: 20, top: 10),

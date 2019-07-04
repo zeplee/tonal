@@ -1,64 +1,9 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:tonal/helper/global.dart';
-import 'package:tonal/helper/route_helper.dart';
 import 'package:tonal/page/carts.dart';
 import 'package:tonal/page/category.dart';
 import 'package:tonal/page/home.dart';
 import 'package:tonal/page/mine.dart';
 import 'package:tonal/page/myshop.dart';
-
-void main() {
-  if (Platform.isAndroid) {
-    //透明状态栏，android默认是半透明
-    SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
-  }
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    Global.init(context);
-    return MaterialApp(
-        title: 'tonal',
-        showSemanticsDebugger: false,
-        color: Colors.white,
-        theme: ThemeData(
-          pageTransitionsTheme: PageTransitionsTheme(builders: {
-            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
-            TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
-          }),
-          primaryColor: Colors.white,
-          textSelectionColor: Colors.red,
-        ),
-        routes: RouteHelper.routes,
-        initialRoute: RouteHelper.greetPage,
-//        onGenerateRoute: (setting) => new PageRouteBuilder(
-//            pageBuilder: (BuildContext context, _, __) {
-//              //这里为返回的Widget
-//              return HomePage();
-//            },
-//            opaque: false,
-//            //跳转动画
-//            transitionDuration: new Duration(milliseconds: 200),
-//            transitionsBuilder:
-//                (___, Animation<double> animation, ____, Widget child) {
-//              return new FadeTransition(
-//                opacity: animation,
-//                child: new ScaleTransition(
-//                  scale: new Tween<double>(begin: 0.5, end: 1.0)
-//                      .animate(animation),
-//                  child: child,
-//                ),
-//              );
-//            }),
-        home: MainPage());
-  }
-}
 
 class MainPage extends StatefulWidget {
   @override

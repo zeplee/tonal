@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tonal/main.dart';
 import 'package:tonal/page/about.dart';
 import 'package:tonal/page/carts.dart';
 import 'package:tonal/page/category.dart';
 import 'package:tonal/page/greet.dart';
 import 'package:tonal/page/login.dart';
+import 'package:tonal/page/main.dart';
 import 'package:tonal/page/mine.dart';
 import 'package:tonal/page/prod.dart';
 import 'package:tonal/page/search_result.dart';
