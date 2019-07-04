@@ -1,8 +1,7 @@
-import 'dart:math';
-
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:tonal/helper/route_helper.dart';
+import 'package:tonal/helper/sliver_appbar_delegate.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -119,6 +118,9 @@ class HomePageState extends State<HomePage>
 //      preferredSize: Size.fromHeight(40.0)
       );
 
+//      PreferredSize(
+//      child:
+
   tabBar() => TabBar(
 //      onTap: (int index) {
 //        setState(() {
@@ -184,7 +186,7 @@ class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
   Widget build(BuildContext context) => RefreshIndicator(
         //下拉刷新
         child: CustomScrollView(
-//          physics: ScrollPhysics(),
+          physics: ScrollPhysics(),
           //使用builder有自动回收功能
           slivers: <Widget>[
             HomeBodyTopWidget(),
@@ -208,7 +210,7 @@ class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
   ceilingBar() => SliverPersistentHeader(
       pinned: true, //是否固定在顶部
       floating: false,
-      delegate: _SliverAppBarDelegate(
+      delegate: SliverAppBarDelegate(
           minHeight: 50, //收起的高度
           maxHeight: 60, //展开的最大高度
           child: DefaultTabController(
@@ -237,37 +239,6 @@ class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
                             ))
                         .toList())),
           )));
-}
-
-class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  _SliverAppBarDelegate({
-    @required this.minHeight,
-    @required this.maxHeight,
-    @required this.child,
-  });
-
-  final double minHeight;
-  final double maxHeight;
-  final Widget child;
-
-  @override
-  double get minExtent => minHeight;
-
-  @override
-  double get maxExtent => max(maxHeight, minHeight);
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return new SizedBox.expand(child: child);
-  }
-
-  @override
-  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
-    return maxHeight != oldDelegate.maxHeight ||
-        minHeight != oldDelegate.minHeight ||
-        child != oldDelegate.child;
-  }
 }
 
 class HomeBodyTopWidget extends StatefulWidget {

@@ -94,7 +94,5 @@ class MainPageState extends State<MainPage> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       );
 
-  void onNaviItemSelect(int index) => setState(() {
-        currentIndex = index;
-      });
+  void onNaviItemSelect(int index) => setState(() => currentIndex = index);
 }
