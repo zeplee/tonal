@@ -40,7 +40,7 @@ android {
             signingConfig signingConfigs.debug
         }
         release {
-            ndk { abiFilters "armeabi-v7a" }
+//            ndk { abiFilters "armeabi-v7a" }
             signingConfig signingConfigs.debug
         }
     }
