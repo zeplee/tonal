@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tonal/page/carts.dart';
 import 'package:tonal/page/category.dart';
@@ -39,7 +40,12 @@ class MainPageState extends State<MainPage> {
         title: Text('店铺'),
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.shopping_cart),
+        icon: Stack(
+          children: <Widget>[
+            Icon(Icons.shopping_cart),
+            Text('1'),
+          ],
+        ),
         title: Text('购物车'),
       ),
       BottomNavigationBarItem(
