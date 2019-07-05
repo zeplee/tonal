@@ -4,15 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tonal/helper/page_transition.dart';
 import 'package:tonal/helper/route_helper.dart';
-import 'package:tonal/page/home.dart';
 
 import 'page/main.dart';
 
 void main() {
+  //https://www.jianshu.com/p/9409845d8794
+  //https://www.jianshu.com/p/b931c05b0df9
   if (Platform.isAndroid) {
     //透明状态栏，android默认是半透明
-    SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        //启动时状态栏字体颜色，进入后取得是appbar的Brightness
+        statusBarIconBrightness: Brightness.light,
+        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarIconBrightness: Brightness.dark));
   }
   runApp(MyApp());
 }
@@ -22,8 +27,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 //    Global.init(context);
     return MaterialApp(
-        title: 'tonal',
         showSemanticsDebugger: false,
+        //最近列表中的文字和背景
+        title: 'tonal',
         color: Colors.white,
         //https://www.jianshu.com/p/8d8ded72e673
         theme: ThemeData(
@@ -45,23 +51,23 @@ class MyApp extends StatelessWidget {
         ),
         routes: RouteHelper.routes,
         initialRoute: RouteHelper.greetPage,
-        onGenerateRoute: (setting) => PageRouteBuilder(
-            pageBuilder: (BuildContext context, _, __) {
-              return HomePage();
-            },
-            opaque: false,
-            transitionDuration: new Duration(milliseconds: 200),
-            transitionsBuilder:
-                (___, Animation<double> animation, ____, Widget child) {
-              return new FadeTransition(
-                opacity: animation,
-                child: new ScaleTransition(
-                  scale: new Tween<double>(begin: 0.5, end: 1.0)
-                      .animate(animation),
-                  child: child,
-                ),
-              );
-            }),
+//        onGenerateRoute: (setting) => PageRouteBuilder(
+//            pageBuilder: (BuildContext context, _, __) {
+//              return MainPage();
+//            },
+//            opaque: false,
+//            transitionDuration: new Duration(milliseconds: 200),
+//            transitionsBuilder:
+//                (___, Animation<double> animation, ____, Widget child) {
+//              return new FadeTransition(
+//                opacity: animation,
+//                child: new ScaleTransition(
+//                  scale: new Tween<double>(begin: 0.5, end: 1.0)
+//                      .animate(animation),
+//                  child: child,
+//                ),
+//              );
+//            }),
         home: MainPage());
   }
 }
