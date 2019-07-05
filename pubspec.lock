@@ -21,7 +21,7 @@ packages:
       name: async
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.0"
+    version: "2.2.0"
   build:
     dependency: transitive
     description:
@@ -112,7 +112,7 @@ packages:
       name: cookie_jar
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
   crypto:
     dependency: transitive
     description:
@@ -140,7 +140,7 @@ packages:
       name: dio
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.7"
+    version: "2.1.10"
   english_words:
     dependency: "direct main"
     description:
@@ -327,7 +327,7 @@ packages:
       name: pedantic
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.5.0"
+    version: "1.8.0+1"
   petitparser:
     dependency: transitive
     description:
@@ -369,7 +369,7 @@ packages:
       name: quiver
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.2"
+    version: "2.0.3"
   shared_preferences:
     dependency: "direct main"
     description:
