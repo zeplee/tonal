@@ -5,6 +5,7 @@ import 'package:tonal/page/category.dart';
 import 'package:tonal/page/home.dart';
 import 'package:tonal/page/mine.dart';
 import 'package:tonal/page/myshop.dart';
+import 'package:tonal/widget/badge.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -40,12 +41,7 @@ class MainPageState extends State<MainPage> {
         title: Text('店铺'),
       ),
       BottomNavigationBarItem(
-        icon: Stack(
-          children: <Widget>[
-            Icon(Icons.shopping_cart),
-            Text('1'),
-          ],
-        ),
+        icon: BadgeWidget(Icon(Icons.shopping_cart)),
         title: Text('购物车'),
       ),
       BottomNavigationBarItem(
