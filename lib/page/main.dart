@@ -16,6 +16,10 @@ class MainPageState extends State<MainPage> {
   int currentIndex = 0;
   List<Widget> mainPages;
   List<BottomNavigationBarItem> mainNaviItems;
+  var badge = BadgeWidget(
+    icon: Icon(Icons.shopping_cart),
+    num: 0,
+  );
 
   @override
   void initState() {
@@ -41,7 +45,7 @@ class MainPageState extends State<MainPage> {
         title: Text('店铺'),
       ),
       BottomNavigationBarItem(
-        icon: BadgeWidget(Icon(Icons.shopping_cart)),
+        icon: badge,
         title: Text('购物车'),
       ),
       BottomNavigationBarItem(
@@ -76,6 +80,7 @@ class MainPageState extends State<MainPage> {
             //重新创建首页
 //            Navigator.pushNamedAndRemoveUntil(
 //                context, '/mainPage', (Route route) => false);
+            badge.num++;
             setState(() {
               if (mainNaviItems.length == 5) {
                 mainPages.removeAt(2);
