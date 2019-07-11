@@ -190,8 +190,10 @@ class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
           //使用builder有自动回收功能
           slivers: <Widget>[
             HomeBodyTopWidget(),
-            ceilingBar(),
-            HomeBodyBottomWidget()
+            stickyBar(),
+            HomeBodyTopWidget(),
+            stickyBar2(),
+            HomeBodyBottomWidget(),
           ],
         ),
         onRefresh: refresh,
@@ -207,17 +209,50 @@ class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
     });
   }
 
-  ceilingBar() => SliverPersistentHeader(
+  stickyBar() => SliverPersistentHeader(
       pinned: true, //是否固定在顶部
-      floating: false,
+      floating: true,
       delegate: SliverAppBarDelegate(
           minHeight: 50, //收起的高度
-          maxHeight: 60, //展开的最大高度
+          maxHeight: 50, //展开的最大高度
           child: DefaultTabController(
             initialIndex: 4,
             length: tabTitles.length,
             child: Material(
                 color: Colors.pinkAccent,
+                child: TabBar(
+                    isScrollable: true,
+                    unselectedLabelStyle:
+                        TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    labelStyle:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    labelColor: Colors.blueAccent,
+                    unselectedLabelColor: Colors.black45,
+                    labelPadding: EdgeInsets.only(left: 20, right: 20, top: 10),
+                    indicatorColor: Colors.blueAccent,
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    indicator: UnderlineTabIndicator(
+                        insets: EdgeInsets.only(left: 15, right: 15),
+                        borderSide:
+                            BorderSide(width: 4.0, color: Colors.blueAccent)),
+                    tabs: tabTitles
+                        .map((item) => Tab(
+                              text: item,
+                            ))
+                        .toList())),
+          )));
+
+  stickyBar2() => SliverPersistentHeader(
+      pinned: true, //是否固定在顶部
+      floating: false,
+      delegate: SliverAppBarDelegate(
+          minHeight: 50, //收起的高度
+          maxHeight: 50, //展开的最大高度
+          child: DefaultTabController(
+            initialIndex: 4,
+            length: tabTitles.length,
+            child: Material(
+                color: Colors.greenAccent,
                 child: TabBar(
                     isScrollable: true,
                     unselectedLabelStyle:
