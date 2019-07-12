@@ -186,7 +186,7 @@ class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
   Widget build(BuildContext context) => RefreshIndicator(
         //下拉刷新
         child: CustomScrollView(
-          physics: ScrollPhysics(),
+          physics: AlwaysScrollableScrollPhysics(),
           //使用builder有自动回收功能
           slivers: <Widget>[
             HomeBodyTopWidget(),

@@ -15,7 +15,17 @@ class BadgeWidget extends StatefulWidget {
 
 class BadgeWidgetState extends State<BadgeWidget> {
   @override
-  Widget build(BuildContext context) => Stack(
+  Widget build(BuildContext context) =>
+      //两种布局方式
+//      Stack(children: <Widget>[
+//        Icon(Icons.home),
+//        Positioned(
+//          top: 0.0,
+//          right: 0.0,
+//          child: Icon(Icons.brightness_1, size: 8.0, color: Colors.redAccent),
+//        )
+//      ]);
+      Stack(
         children: <Widget>[
           Container(
             child: widget.icon,

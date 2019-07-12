@@ -18,3 +18,6 @@ https://www.cnblogs.com/pythonClub/p/10659521.html
 https://blog.csdn.net/yumi0629/article/details/83305627
      2
 https://www.jianshu.com/p/d96508c9d174
+
+
+--enable-software-rendering

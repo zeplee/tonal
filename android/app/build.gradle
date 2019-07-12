@@ -15,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId "com.lizepeng.tonal"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode localProperties.getProperty('flutter.versionCode').toInteger()
         versionName localProperties.getProperty('flutter.versionName')
