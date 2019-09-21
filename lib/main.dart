@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:tonal/helper/page_transition.dart';
 import 'package:tonal/helper/route_helper.dart';
 
-import 'page/main.dart';
+import 'page/index.dart';
 
 void main() {
   //https://www.jianshu.com/p/9409845d8794
@@ -68,6 +68,6 @@ class MyApp extends StatelessWidget {
 //                ),
 //              );
 //            }),
-        home: MainPage());
+        home: IndexPage());
   }
 }
