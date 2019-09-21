@@ -4,7 +4,7 @@ import 'package:tonal/page/carts.dart';
 import 'package:tonal/page/category.dart';
 import 'package:tonal/page/greet.dart';
 import 'package:tonal/page/login.dart';
-import 'package:tonal/page/main.dart';
+import 'package:tonal/page/index.dart';
 import 'package:tonal/page/mine.dart';
 import 'package:tonal/page/prod.dart';
 import 'package:tonal/page/search_result.dart';
@@ -24,7 +24,7 @@ class RouteHelper {
   static const settingsPage = '/settingsPage';
   static const loginPage = '/loginPage';
   static Map<String, WidgetBuilder> routes = {
-    mainPage: (BuildContext context) => MainPage(),
+    mainPage: (BuildContext context) => IndexPage(),
     greetPage: (BuildContext context) => GreetPage(),
     minePage: (BuildContext context) => MinePage(),
     cartsPage: (BuildContext context) => CartsPage(),

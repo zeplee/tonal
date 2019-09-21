@@ -7,12 +7,12 @@ import 'package:tonal/page/mine.dart';
 import 'package:tonal/page/myshop.dart';
 import 'package:tonal/widget/badge.dart';
 
-class MainPage extends StatefulWidget {
+class IndexPage extends StatefulWidget {
   @override
-  State createState() => MainPageState();
+  State createState() => IndexPageState();
 }
 
-class MainPageState extends State<MainPage> {
+class IndexPageState extends State<IndexPage> {
   int currentIndex = 0;
   List<Widget> mainPages;
   List<BottomNavigationBarItem> mainNaviItems;
