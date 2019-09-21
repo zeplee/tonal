@@ -71,13 +71,14 @@ class ShopBodyState extends State<ShopBody> {
             _datas.addAll(generateWordPairs().take(10));
           }
           return ShopBodyListItem(_datas[index]);
-        } else {
-          //有限列表
-          if (index < _datas.length) {
-            //如果不判断到话，会继续绘制null条目，因为这个不加itemCount的话是无限循环绘制；不判断也可以，加上itemCount属性
-            return ShopBodyListItem(_datas[index]);
-          }
-        }
+        } 
+        // else {
+        //   //有限列表
+        //   if (index < _datas.length) {
+        //     //如果不判断到话，会继续绘制null条目，因为这个不加itemCount的话是无限循环绘制；不判断也可以，加上itemCount属性
+        //     return ShopBodyListItem(_datas[index]);
+        //   }
+        // }
       });
 }
 

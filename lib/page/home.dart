@@ -183,21 +183,24 @@ class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
   }
 
   @override
-  Widget build(BuildContext context) => RefreshIndicator(
-        //下拉刷新
-        child: CustomScrollView(
-          physics: AlwaysScrollableScrollPhysics(),
-          //使用builder有自动回收功能
-          slivers: <Widget>[
-            HomeBodyTopWidget(),
-            stickyBar(),
-            HomeBodyTopWidget(),
-            stickyBar2(),
-            HomeBodyBottomWidget(),
-          ],
-        ),
-        onRefresh: refresh,
-      );
+  Widget build(BuildContext context) {
+    super.build(context);
+    return RefreshIndicator(
+      //下拉刷新
+      child: CustomScrollView(
+        physics: AlwaysScrollableScrollPhysics(),
+        //使用builder有自动回收功能
+        slivers: <Widget>[
+          HomeBodyTopWidget(),
+          stickyBar(),
+          HomeBodyTopWidget(),
+          stickyBar2(),
+          HomeBodyBottomWidget(),
+        ],
+      ),
+      onRefresh: refresh,
+    );
+  }
 
   Future refresh() async {
     // 延迟3秒后添加新数据， 模拟网络加载
@@ -297,20 +300,22 @@ class HomeBodyTopState extends State<HomeBodyTopWidget> {
         (context, i) {
           if (i.isOdd) return Divider();
           final index = i ~/ 2; //item的真实位置
-          if (false) {
-            //无限列表
-            if (index >= _datas.length) {
-              //绘制到结尾了
-              _datas.addAll(generateWordPairs().take(10));
-            }
-            return HomeBodyListItem(index, _datas[index]);
-          } else {
+          if (true) {
             //有限列表
             if (index < _datas.length) {
               //如果不判断到话，会继续绘制null条目，因为这个不加itemCount的话是无限循环绘制；不判断也可以，加上itemCount属性
               return HomeBodyListItem(index, _datas[index]);
-            }
+            } else
+              return null;
           }
+          // else {
+          //    //无限列表
+          //   if (index >= _datas.length) {
+          //     //绘制到结尾了
+          //     _datas.addAll(generateWordPairs().take(10));
+          //   }
+          //   return HomeBodyListItem(index, _datas[index]);
+          // }
         },
       ));
 }
@@ -343,13 +348,14 @@ class HomeBodyBottomState extends State<HomeBodyBottomWidget> {
               _datas.addAll(generateWordPairs().take(10));
             }
             return HomeBodyListItem(index, _datas[index]);
-          } else {
-            //有限列表
-            if (index < _datas.length) {
-              //如果不判断到话，会继续绘制null条目，因为这个不加itemCount的话是无限循环绘制；不判断也可以，加上itemCount属性
-              return HomeBodyListItem(index, _datas[index]);
-            }
           }
+          // else {
+          //   //有限列表
+          //   if (index < _datas.length) {
+          //     //如果不判断到话，会继续绘制null条目，因为这个不加itemCount的话是无限循环绘制；不判断也可以，加上itemCount属性
+          //     return HomeBodyListItem(index, _datas[index]);
+          //   }
+          // }
         },
       ));
 }

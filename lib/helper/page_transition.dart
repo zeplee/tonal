@@ -21,12 +21,12 @@ class _FadePageTransition extends StatelessWidget {
       : _opacityAnimation = routeAnimation.drive(_easeInTween),
         super(key: key);
 
-  static final Tween<Offset> _bottomUpTween = Tween<Offset>(
-    begin: const Offset(0.0, 0.25),
-    end: Offset.zero,
-  );
-  static final Animatable<double> _fastOutSlowInTween =
-      CurveTween(curve: Curves.fastOutSlowIn);
+  // static final Tween<Offset> _bottomUpTween = Tween<Offset>(
+  //   begin: const Offset(0.0, 0.25),
+  //   end: Offset.zero,
+  // );
+  // static final Animatable<double> _fastOutSlowInTween =
+  //     CurveTween(curve: Curves.fastOutSlowIn);
   static final Animatable<double> _easeInTween =
       CurveTween(curve: Curves.easeIn);
 

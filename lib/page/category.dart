@@ -58,18 +58,17 @@ class CategoryBodyState extends State<CategoryBody> {
                 //绘制到结尾了
                 _datas.addAll(_datas.take(10));
               }
-              if (index < _datas.length) {
-                return CategoryListItem(_datas[index]);
-              }
-            } else {
-              //有限列表
               return CategoryListItem(_datas[index]);
             }
+            // else {
+            //   //有限列表
+            //   return CategoryListItem(_datas[index]);
+            // }
           });
 }
 
 class CategoryListItem extends StatefulWidget {
-  var data;
+  final data;
 
   CategoryListItem(this.data) : super();
 
