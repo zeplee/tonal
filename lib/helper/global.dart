@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+
 //无效
 class Global {
-  static BuildContext CONTEXT;
+  static BuildContext mContext;
 
   static init(BuildContext context) {
-    CONTEXT = context;
+    mContext = context;
   }
 }
