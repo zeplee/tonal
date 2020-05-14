@@ -10,16 +10,22 @@ import 'page/index.dart';
 void main() {
   //https://www.jianshu.com/p/9409845d8794
   //https://www.jianshu.com/p/b931c05b0df9
-  if (Platform.isAndroid) {
-    //透明状态栏，android默认是半透明
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        //启动时状态栏字体颜色，进入后取得是appbar的Brightness
-        statusBarIconBrightness: Brightness.light,
-        systemNavigationBarColor: Colors.transparent,
-        systemNavigationBarIconBrightness: Brightness.dark));
+  try {
+    //web平台时会无法通过，所以try catch
+    if (Platform.isAndroid) {
+      //透明状态栏，android默认是半透明
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          //启动时状态栏字体颜色，进入后取得是appbar的Brightness
+          statusBarIconBrightness: Brightness.light,
+          systemNavigationBarColor: Colors.transparent,
+          systemNavigationBarIconBrightness: Brightness.dark));
+    }
+  } catch (e, stack) {
+    print(e);
+  } finally {
+    runApp(MyApp());
   }
-  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
