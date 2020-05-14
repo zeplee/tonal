@@ -6,21 +6,27 @@ if (localPropertiesFile.exists()) {
     }
 }
 
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply from: "${localProperties.getProperty('flutter.sdk')}/packages/flutter_tools/gradle/flutter.gradle"
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     compileSdkVersion 28
-
-    defaultConfig {
-        applicationId "com.lizepeng.tonal"
-        minSdkVersion 19
-        targetSdkVersion 28
-        versionCode localProperties.getProperty('flutter.versionCode').toInteger()
-        versionName localProperties.getProperty('flutter.versionName')
-        resConfigs 'zh' //去除资源（包括依赖）中的外文资源
-    }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -30,8 +36,13 @@ android {
         disable 'InvalidPackage'
     }
 
-    flutter {
-        source '../..'
+    defaultConfig {
+        applicationId "com.lizepeng.tonal"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+//        resConfigs 'zh' //去除资源（包括依赖）中的外文资源
     }
 
     buildTypes {
@@ -44,6 +55,10 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+}
+
+flutter {
+    source '../..'
 }
 
 dependencies {
