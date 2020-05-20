@@ -1,79 +1,79 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:tonal/helper/page_transition.dart';
-import 'package:tonal/helper/route_helper.dart';
-
-import 'page/index.dart';
 
 void main() {
-  //https://www.jianshu.com/p/9409845d8794
-  //https://www.jianshu.com/p/b931c05b0df9
-  try {
-    //web平台时会无法通过，所以try catch
-    if (Platform.isAndroid) {
-      //透明状态栏，android默认是半透明
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-          statusBarColor: Colors.transparent,
-          //启动时状态栏字体颜色，进入后取得是appbar的Brightness
-          statusBarIconBrightness: Brightness.light,
-          systemNavigationBarColor: Colors.transparent,
-          systemNavigationBarIconBrightness: Brightness.dark));
-    }
-  } catch (e, stack) {
-    print(e);
-  } finally {
-    runApp(MyApp());
-  }
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-//    Global.init(context);
     return MaterialApp(
-        showSemanticsDebugger: false,
-        //最近列表中的文字和背景
-        title: 'tonal',
-        color: Colors.white,
-        //https://www.jianshu.com/p/8d8ded72e673
-        theme: ThemeData(
-          pageTransitionsTheme: PageTransitionsTheme(builders: {
-            TargetPlatform.android: FadePageTransitionsBuilder(),
-            TargetPlatform.iOS: FadePageTransitionsBuilder(),
-          }),
-          primaryColor: Colors.white,
-//          scaffoldBackgroundColor: Colors.white,
-          splashColor: Colors.red,
-          highlightColor: Colors.red,
-          dividerColor: Colors.pink,
-          cursorColor: Colors.red,
-          textSelectionColor: Colors.red,
-          hintColor: Colors.indigoAccent,
-          errorColor: Colors.indigoAccent,
-//          canvasColor: Colors.yellow,
-//          primaryColorBrightness: Brightness.dark,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: HomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  HomePage({Key key, this.title}) : super(key: key);
+
+  // This widget is the home page of your application. It is stateful, meaning
+  // that it has a State object (defined below) that contains fields that affect
+  // how it looks.
+
+  // This class is the configuration for the state. It holds the values (in this
+  // case the title) provided by the parent (in this case the App widget) and
+  // used by the build method of the State. Fields in a Widget subclass are
+  // always marked "final".
+
+  final String title;
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.0),
+        child: AppBar(
+          centerTitle: true,
+          title: Text(widget.title),
         ),
-        routes: RouteHelper.routes,
-        initialRoute: RouteHelper.greetPage,
-//        onGenerateRoute: (setting) => PageRouteBuilder(
-//            pageBuilder: (BuildContext context, _, __) {
-//              return MainPage();
-//            },
-//            opaque: false,
-//            transitionDuration: new Duration(milliseconds: 200),
-//            transitionsBuilder:
-//                (___, Animation<double> animation, ____, Widget child) {
-//              return new FadeTransition(
-//                opacity: animation,
-//                child: new ScaleTransition(
-//                  scale: new Tween<double>(begin: 0.5, end: 1.0)
-//                      .animate(animation),
-//                  child: child,
-//                ),
-//              );
-//            }),
-        home: IndexPage());
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
   }
 }
