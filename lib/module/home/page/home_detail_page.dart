@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
+//详情页
+class DetailPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _DetailPageState createState() => _DetailPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _DetailPageState extends State<DetailPage> {
   int _counter = 0;
+  Map arguments = {};
 
   @override
   Widget build(BuildContext context) {
+    arguments = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: AppBar(
           centerTitle: true,
-          title: Text(widget.title),
+          title: Text("${arguments['title']}"),
         ),
       ),
       body: Center(
