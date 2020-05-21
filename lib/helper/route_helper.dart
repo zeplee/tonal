@@ -6,6 +6,7 @@ import 'package:tonal/module/home/page/home_page.dart';
 
 //https://www.psvmc.cn/article/2020-05-10-flutter-start-05-route.html
 class RouteHelper {
+  //用此可以代替Navigator.of(context)，用于某些情况没有context对象时的跳转
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
   static const defaultPage = '/DefaultPage';
