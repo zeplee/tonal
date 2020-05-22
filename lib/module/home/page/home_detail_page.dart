@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 //详情页
 class HomeDetailPage extends StatelessWidget {
   Map arguments = {};
+  int _counter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +23,20 @@ class HomeDetailPage extends StatelessWidget {
             Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '1',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) =>
+                  GestureDetector(
+                child: Text(
+                  '$_counter',
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+                onTap: () => {
+                  setState(() {
+                    _counter++;
+                  }),
+                },
+              ),
+            )
           ],
         ),
       ),
