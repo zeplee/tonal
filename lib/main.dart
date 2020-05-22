@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tonal/helper/route_helper.dart';
+import 'package:tonal/module/default/page/default_page.dart';
 
 import 'module/home/page/home_page.dart';
 
@@ -29,16 +30,29 @@ class App extends StatelessWidget {
       color: Colors.white,
       //android 最近列表中的背景色
       theme: ThemeData(
+        //开启侧滑返回
+        platform: TargetPlatform.iOS,
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      darkTheme: ThemeData(
+        platform: TargetPlatform.iOS,
+        primarySwatch: Colors.red,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      themeMode: ThemeMode.system,
       navigatorKey: RouteHelper.navigatorKey,
       routes: RouteHelper.routes,
 //      onGenerateRoute: MaterialPageRoute(),
+      onUnknownRoute: _onUnknownRoute,
       initialRoute: RouteHelper.greetPage,
-      home: HomePage(title: 'HomePage'),
+      home: HomePage(),
     );
   }
+
+  static RouteFactory _onUnknownRoute = (RouteSettings setting) {
+    return MaterialPageRoute(builder: (context) => DefaultPage());
+  };
 
 //  static Route<dynamic> _onGenerateRoute(RouteSettings settings) {
 //    return AppPageRouteBuilder(

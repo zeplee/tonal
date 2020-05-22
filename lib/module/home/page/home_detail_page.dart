@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 //详情页
-class DetailPage extends StatefulWidget {
+class HomeDetailPage extends StatefulWidget {
+  HomeDetailPage({Key key, this.title}) : super(key: key);
+  final String title;
+
   @override
-  _DetailPageState createState() => _DetailPageState();
+  _HomeDetailPageState createState() => _HomeDetailPageState();
 }
 
-class _DetailPageState extends State<DetailPage> {
+class _HomeDetailPageState extends State<HomeDetailPage> {
   int _counter = 0;
   Map arguments = {};
 
@@ -18,7 +21,7 @@ class _DetailPageState extends State<DetailPage> {
         preferredSize: Size.fromHeight(50.0),
         child: AppBar(
           centerTitle: true,
-          title: Text("${arguments['title']}"),
+          title: Text(widget.title ?? "detail"),
         ),
       ),
       body: Center(

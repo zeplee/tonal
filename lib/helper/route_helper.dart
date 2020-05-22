@@ -17,7 +17,7 @@ class RouteHelper {
     defaultPage: (BuildContext context) => DefaultPage(),
     greetPage: (BuildContext context) => GreetPage(),
     homePage: (BuildContext context) => HomePage(),
-    detailPage: (BuildContext context) => DetailPage(),
+    detailPage: (BuildContext context) => HomeDetailPage(),
   };
 
   //打开页面

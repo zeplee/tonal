@@ -36,7 +36,7 @@ class _GreetPageState extends State<GreetPage> {
                   'goBack',
                 ),
                 onTap: () {
-                  ToastHelper.show(context, "退出欢迎页", duration: 3);
+                  ToastHelper.show(context, "退出欢迎页");
                   RouteHelper.pop();
                 },
               ),
