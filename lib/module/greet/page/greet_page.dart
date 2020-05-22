@@ -40,7 +40,7 @@ class GreetPage extends StatelessWidget {
                 valueListenable: _counter,
                 builder: (BuildContext context, int value, Widget child) =>
                     Text(
-                  '${_counter.value}',
+                  '$value',
                   style: Theme.of(context).textTheme.headline4,
                 ),
               ),
