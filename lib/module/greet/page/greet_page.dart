@@ -3,13 +3,8 @@ import 'package:tonal/helper/route_helper.dart';
 import 'package:tonal/helper/toast_helper.dart';
 
 //欢迎页
-class GreetPage extends StatefulWidget {
-  @override
-  _GreetPageState createState() => _GreetPageState();
-}
-
-class _GreetPageState extends State<GreetPage> {
-  int _counter = 0;
+class GreetPage extends StatelessWidget {
+  final ValueNotifier<int> _counter = ValueNotifier(0);
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +35,7 @@ class _GreetPageState extends State<GreetPage> {
                   RouteHelper.pop();
                 },
               ),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headline4,
-              ),
+              IncrementWidget(counter: _counter),
             ],
           ),
         ),
@@ -56,9 +48,30 @@ class _GreetPageState extends State<GreetPage> {
   }
 
   void _incrementCounter() {
-    setState(() {
-      _counter = 1;
-      _counter++;
-    });
+    _counter.value++;
+  }
+}
+
+class IncrementWidget extends StatefulWidget {
+  final ValueNotifier<int> counter;
+
+  IncrementWidget({Key key, this.counter}) : super(key: key);
+
+  @override
+  _IncrementWidgetState createState() => _IncrementWidgetState();
+}
+
+class _IncrementWidgetState extends State<IncrementWidget> {
+  didValueChange() {
+    setState(() {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    widget.counter.addListener(didValueChange);
+    return Text(
+      '${widget.counter.value}',
+      style: Theme.of(context).textTheme.headline4,
+    );
   }
 }
