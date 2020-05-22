@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tonal/helper/route_helper.dart';
 import 'package:tonal/helper/toast_helper.dart';
@@ -35,43 +36,22 @@ class GreetPage extends StatelessWidget {
                   RouteHelper.pop();
                 },
               ),
-              IncrementWidget(counter: _counter),
+              ValueListenableBuilder<int>(
+                valueListenable: _counter,
+                builder: (BuildContext context, int value, Widget child) =>
+                    Text(
+                  '${_counter.value}',
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+              ),
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: _incrementCounter,
+          onPressed: () => _counter.value++,
           child: Icon(Icons.add),
         ), // This trailing comma makes auto-formatting nicer for build methods.
       ),
-    );
-  }
-
-  void _incrementCounter() {
-    _counter.value++;
-  }
-}
-
-class IncrementWidget extends StatefulWidget {
-  final ValueNotifier<int> counter;
-
-  IncrementWidget({Key key, this.counter}) : super(key: key);
-
-  @override
-  _IncrementWidgetState createState() => _IncrementWidgetState();
-}
-
-class _IncrementWidgetState extends State<IncrementWidget> {
-  didValueChange() {
-    setState(() {});
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    widget.counter.addListener(didValueChange);
-    return Text(
-      '${widget.counter.value}',
-      style: Theme.of(context).textTheme.headline4,
     );
   }
 }
