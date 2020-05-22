@@ -12,22 +12,40 @@ class RouteHelper {
   static const defaultPage = '/DefaultPage';
   static const greetPage = '/GreetPage';
   static const homePage = '/HomePage';
-  static const detailPage = '/DetailPage';
+  static const homeDetailPage = '/HomePage/HomeDetailPage';
   static Map<String, WidgetBuilder> routes = {
     defaultPage: (BuildContext context) => DefaultPage(),
     greetPage: (BuildContext context) => GreetPage(),
     homePage: (BuildContext context) => HomePage(),
-    detailPage: (BuildContext context) => HomeDetailPage(),
+    homeDetailPage: (BuildContext context) => HomeDetailPage(),
   };
+
+  static Route<dynamic> onUnknownRoute(RouteSettings setting) {
+    return MaterialPageRoute(builder: (context) => DefaultPage());
+  }
+
+  static Route<dynamic> onGenerateRoute(RouteSettings settings) {
+    String routeName = settings.name;
+    switch (routeName) {
+      case "/":
+        return MaterialPageRoute(builder: (context) => HomePage());
+      case homeDetailPage:
+        return MaterialPageRoute(builder: (context) => DefaultPage());
+      default:
+        return MaterialPageRoute(builder: (context) => DefaultPage());
+    }
+//        AppPageRouteBuilder(
+//            builder: (context) => OnboardingScreen(), settings: settings);
+  }
 
   //打开页面
   static void push(String path, {Object arguments}) {
-    navigatorKey.currentState.pushNamed(path);
+    navigatorKey.currentState.pushNamed(path, arguments: arguments);
   }
 
   //替换页面
   static void pushReplacementNamed(String path, {Object arguments}) {
-    navigatorKey.currentState.pushReplacementNamed(path);
+    navigatorKey.currentState.pushReplacementNamed(path, arguments: arguments);
   }
 
   //关闭页面

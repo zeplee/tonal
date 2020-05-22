@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tonal/helper/route_helper.dart';
-import 'package:tonal/module/default/page/default_page.dart';
 
 import 'module/home/page/home_page.dart';
 
@@ -37,25 +36,16 @@ class App extends StatelessWidget {
       ),
       darkTheme: ThemeData(
         platform: TargetPlatform.iOS,
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.brown,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       themeMode: ThemeMode.system,
       navigatorKey: RouteHelper.navigatorKey,
       routes: RouteHelper.routes,
-//      onGenerateRoute: MaterialPageRoute(),
-      onUnknownRoute: _onUnknownRoute,
+      onGenerateRoute: RouteHelper.onGenerateRoute,
+      onUnknownRoute: RouteHelper.onUnknownRoute,
       initialRoute: RouteHelper.greetPage,
       home: HomePage(),
     );
   }
-
-  static RouteFactory _onUnknownRoute = (RouteSettings setting) {
-    return MaterialPageRoute(builder: (context) => DefaultPage());
-  };
-
-//  static Route<dynamic> _onGenerateRoute(RouteSettings settings) {
-//    return AppPageRouteBuilder(
-//        builder: (context) => OnboardingScreen(), settings: settings);
-//  }
 }
