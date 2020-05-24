@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
                   child: Text(
                     'You have pushed the button this many times:',
                   ),
-                  onTap: () => RouteHelper.push(RouteHelper.homeDetailPage,
+                  onTap: () => RouteHelper.push(RouteHelper.defaultPage,
                       arguments: {"title": "DetailPage"})),
               Text(
                 '$_counter',

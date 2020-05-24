@@ -1,32 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 //缺省页
-class DefaultPage extends StatefulWidget {
-  @override
-  _DefaultPageState createState() => _DefaultPageState();
-}
-
-class _DefaultPageState extends State<DefaultPage> {
+class DefaultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50.0),
-        child: AppBar(
-          centerTitle: true,
-          title: Text("空页面"),
-        ),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'DefaultPage',
+    return ChangeNotifierProvider<Counter>(
+      create: (context) => Counter(),
+      child: Builder(
+        builder: (BuildContext context) {
+          return Scaffold(
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(50.0),
+              child: AppBar(
+                centerTitle: true,
+                title: Text("空页面"),
+              ),
             ),
-          ],
-        ),
+            body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Consumer<Counter>(
+                    builder: (context, counter, child) =>
+                        Text("${counter.value}"),
+                  ),
+                ],
+              ),
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () =>
+                  Provider.of<Counter>(context, listen: false).increment(),
+              child: Icon(Icons.add),
+            ),
+          );
+        },
       ),
     );
+  }
+}
+
+class Counter with ChangeNotifier {
+  int value = 0;
+
+  void increment() {
+    value += 1;
+    notifyListeners();
   }
 }
