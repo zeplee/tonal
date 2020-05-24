@@ -3,12 +3,10 @@ import 'package:provider/provider.dart';
 
 //缺省页
 class DefaultPage extends StatelessWidget {
-  final ValueNotifier<int> _counter = ValueNotifier(0);
-
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => _counter,
+    return ChangeNotifierProvider<Counter>(
+      create: (context) => Counter(),
       child: Builder(
         builder: (BuildContext context) {
           return Scaffold(
@@ -23,15 +21,13 @@ class DefaultPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Consumer<ValueNotifier<int>>(
-                    builder: (context, counter, child) =>
-                        Text("${counter.value}"),
-                  ),
+                  Text("${Provider.of<Counter>(context, listen: true).value}"),
                 ],
               ),
             ),
             floatingActionButton: FloatingActionButton(
-              onPressed: () => _counter.value += 1,
+              onPressed: () =>
+                  Provider.of<Counter>(context, listen: false).increment(),
               child: Icon(Icons.add),
             ),
           );
@@ -41,11 +37,11 @@ class DefaultPage extends StatelessWidget {
   }
 }
 
-//class Counter with ChangeNotifier {
-//  int value = 0;
-//
-//  void increment() {
-//    value += 1;
-//    notifyListeners();
-//  }
-//}
+class Counter with ChangeNotifier {
+  int value = 0;
+
+  void increment() {
+    value += 1;
+    notifyListeners();
+  }
+}
