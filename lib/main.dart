@@ -24,10 +24,10 @@ class App extends StatelessWidget {
       checkerboardRasterCacheImages: false,
       // 检查离屏渲染  打开渲染到屏幕外位图的图层的checkerboarding
       checkerboardOffscreenLayers: false,
-      title: 'Flutter Demo',
-      //android 最近列表中的文字
-      color: Colors.white,
+      //android 最近列表中的文字 web标签名
+      title: 'tonal',
       //android 最近列表中的背景色
+      color: Colors.white,
       theme: ThemeData(
         //开启侧滑返回
         platform: TargetPlatform.iOS,
