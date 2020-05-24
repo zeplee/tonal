@@ -7,7 +7,7 @@ class DefaultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableProvider(
+    return ChangeNotifierProvider(
       create: (context) => _counter,
       child: Builder(
         builder: (BuildContext context) {
@@ -23,8 +23,9 @@ class DefaultPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Consumer<int>(
-                    builder: (context, counter, child) => Text("${counter}"),
+                  Consumer<ValueNotifier<int>>(
+                    builder: (context, counter, child) =>
+                        Text("${counter.value}"),
                   ),
                 ],
               ),
