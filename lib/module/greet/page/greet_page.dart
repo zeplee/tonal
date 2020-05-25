@@ -14,43 +14,55 @@ class GreetPage extends StatelessWidget {
         //拦截返回
         return false;
       },
-      child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50.0),
-          child: AppBar(
-            automaticallyImplyLeading: false, //是否自动加返回键
-            centerTitle: true,
-            title: Text("GreetPage"),
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+                'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg'),
+            fit: BoxFit.cover,
           ),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              GestureDetector(
-                child: Text(
-                  'goBack',
-                ),
-                onTap: () {
-                  ToastHelper.show(context, "退出欢迎页");
-                  RouteHelper.pop();
-                },
-              ),
-              ValueListenableBuilder<int>(
-                valueListenable: _counter,
-                builder: (BuildContext context, int value, Widget child) =>
-                    Text(
-                  '$value',
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-              ),
-            ],
+        child: Scaffold(
+          backgroundColor: Colors.transparent, //背景色改成透明
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(50.0),
+            child: AppBar(
+              backgroundColor: Colors.transparent, //背景色改成透明
+//              elevation: 0, //appbar的阴影
+              automaticallyImplyLeading: false, //是否自动加返回键
+              centerTitle: true,
+              title: Text("GreetPage"),
+            ),
           ),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                GestureDetector(
+                  child: Text(
+                    'goBack',
+                  ),
+                  onTap: () {
+                    ToastHelper.show(context, "退出欢迎页");
+                    RouteHelper.pop();
+                  },
+                ),
+                ValueListenableBuilder<int>(
+                  valueListenable: _counter,
+                  builder: (BuildContext context, int value, Widget child) =>
+                      Text(
+                    '$value',
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () => _counter.value++,
+            child: Icon(Icons.add),
+          ), // This trailing comma makes auto-formatting nicer for build methods.
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => _counter.value++,
-          child: Icon(Icons.add),
-        ), // This trailing comma makes auto-formatting nicer for build methods.
       ),
     );
   }
