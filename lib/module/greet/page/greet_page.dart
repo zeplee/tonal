@@ -23,13 +23,17 @@ class GreetPage extends StatelessWidget {
           ),
         ),
         child: Scaffold(
-          backgroundColor: Colors.transparent, //背景色改成透明
+          //背景色改成透明
+          backgroundColor: Colors.transparent,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(50.0),
             child: AppBar(
-              backgroundColor: Colors.transparent, //背景色改成透明
-//              elevation: 0, //appbar的阴影
-              automaticallyImplyLeading: false, //是否自动加返回键
+              //背景色改成透明
+              backgroundColor: Colors.transparent,
+              //appbar的阴影
+              elevation: 0,
+              //是否自动加返回键
+              automaticallyImplyLeading: false,
               centerTitle: true,
               title: Text("GreetPage"),
             ),
