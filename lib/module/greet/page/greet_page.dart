@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tonal/helper/route_helper.dart';
 import 'package:tonal/helper/toast_helper.dart';
 
@@ -28,6 +29,8 @@ class GreetPage extends StatelessWidget {
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(50.0),
             child: AppBar(
+              //状态栏是否是亮色
+              brightness: Brightness.dark,
               //背景色改成透明
               backgroundColor: Colors.transparent,
               //appbar的阴影
