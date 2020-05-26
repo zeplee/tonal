@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tonal/helper/route_helper.dart';
 import 'package:tonal/helper/toast_helper.dart';
@@ -36,10 +37,26 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               GestureDetector(
                   child: Text(
-                    'You have pushed the button this many times:',
+                    'You have pushed the button this famany times:',
+                    overflow: TextOverflow.clip,
+                    style: TextStyle(
+                      fontFamily: 'Gotham-Book',
+                      fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.0,
+                      wordSpacing: 3.0,
+                      textBaseline: TextBaseline.alphabetic,
+                      shadows: [
+                        BoxShadow(
+                          color: Colors.grey,
+                          offset: Offset(-1, -1),
+                          blurRadius: 5,
+                        )
+                      ],
+                    ),
                   ),
-                  onTap: () => RouteHelper.push(RouteHelper.defaultPage,
-                      arguments: {"title": "DetailPage"})),
+                  onTap: () => RouteHelper.push(RouteHelper.homeDetailPage,
+                      arguments: {"title": "dfahomeDetailPage"})),
               Text(
                 '$_counter',
                 style: Theme.of(context).textTheme.headline4,

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tonal/helper/route_helper.dart';
+import 'package:tonal/module/default/page/error_page.dart';
 
 import 'module/home/page/home_page.dart';
 
@@ -11,12 +12,15 @@ void main() {
     //web平台时会无法通过，所以try catch
     if (Platform.isAndroid) {
       //透明状态栏，android默认是半透明
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           //启动时状态栏字体颜色，进入后取得是appbar的Brightness
           statusBarIconBrightness: Brightness.light,
           systemNavigationBarColor: Colors.transparent,
-          systemNavigationBarIconBrightness: Brightness.dark));
+          systemNavigationBarIconBrightness: Brightness.dark,
+        ),
+      );
     }
   } catch (e) {
     print(e);
@@ -28,7 +32,8 @@ void main() {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //MaterialApp详解 https://www.jianshu.com/p/1d44ae246652
+    ErrorWidget.builder = (FlutterErrorDetails errorDetails) =>
+        ErrorPage(errorDetails: errorDetails);
     return MaterialApp(
       // 是否显示 Material design 基础布局网格，用来调试 UI 的工具
       debugShowMaterialGrid: false,

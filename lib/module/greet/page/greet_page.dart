@@ -1,8 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tonal/helper/route_helper.dart';
-import 'package:tonal/helper/toast_helper.dart';
+import 'package:tonal/helper/helper.dart';
 
 //欢迎页
 class GreetPage extends StatelessWidget {
