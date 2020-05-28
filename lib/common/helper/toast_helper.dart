@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tonal/widget/toast.dart';
+import 'package:tonal/common/widget/toast.dart';
 
 class ToastHelper {
   void showSimple() {}

@@ -7,8 +7,8 @@ class ErrorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("FlutterErrorDetails" +
-        (errorDetails == null ? "" : errorDetails.toString()));
+//    print("FlutterErrorDetails" +
+//        (errorDetails == null ? "" : errorDetails.toString()));
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),

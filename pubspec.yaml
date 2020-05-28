@@ -33,6 +33,7 @@ dependencies:
   fluro: ^1.6.3 # 路由框架 https://github.com/theyakka/fluro
   dio: ^3.0.9 # 网络库 https://github.com/flutterchina/dio
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tonal/helper/route_helper.dart';
-import 'package:tonal/helper/toast_helper.dart';
-import 'package:tonal/utils/app_utils.dart';
+import 'package:tonal/common/helper/helper.dart';
+import 'package:tonal/common/utils/utils.dart';
 
 //首页
 class HomePage extends StatefulWidget {

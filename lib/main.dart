@@ -2,10 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tonal/helper/route_helper.dart';
+import 'package:tonal/common/helper/helper.dart';
 import 'package:tonal/module/default/page/error_page.dart';
-
-import 'module/home/page/home_page.dart';
+import 'package:tonal/module/home/page/home_page.dart';
 
 void main() {
   try {
