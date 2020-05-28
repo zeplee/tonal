@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,8 +18,11 @@ class GreetPage extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage(
-                'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg'),
+//            image: NetworkImage(
+//                'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg'),
+            image: CachedNetworkImageProvider(
+              'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg',
+            ),
             fit: BoxFit.cover,
           ),
         ),

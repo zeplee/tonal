@@ -16,8 +16,8 @@ void main() {
           statusBarColor: Colors.transparent,
           //启动时状态栏字体颜色，进入后取得是appbar的Brightness
           statusBarIconBrightness: Brightness.light,
-          systemNavigationBarColor: Colors.transparent,
-          systemNavigationBarIconBrightness: Brightness.dark,
+//          systemNavigationBarColor: Colors.transparent,
+//          systemNavigationBarIconBrightness: Brightness.dark,
         ),
       );
     }
