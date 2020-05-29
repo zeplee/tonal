@@ -32,6 +32,7 @@ dependencies:
 
   # flutter_launcher_icons: ^0.7.5  # 启动图标 https://github.com/fluttercommunity/flutter_launcher_icons
   # flutter_native_splash: ^0.1.9 # android/ios闪屏页 flutter pub run flutter_native_splash:create https://github.com/henriquearthur/flutter_native_splash
+  # flutter_screenutil: ^1.1.0 # 屏幕适配 https://github.com/OpenFlutter/flutter_screenutil
 
   path_provider: ^1.6.9 # 路径管理 https://github.com/flutter/plugins/tree/master/packages/path_provider
   package_info: ^0.4.0+18 # 包信息 https://github.com/flutter/plugins/tree/master/packages/package_info
@@ -48,9 +49,11 @@ dependencies:
   url_launcher: ^5.4.10 #打开url https://github.com/flutter/plugins/tree/master/packages/url_launcher
 
   event_bus: ^1.1.1 # 事件总线  https://github.com/marcojakob/dart-event-bus
+  flustars: ^0.3.2 # 工具库 https://github.com/Sky24n/flustars
 
-#  video_player: ^0.10.11+1 # 视频播放 https://github.com/flutter/plugins/tree/master/packages/video_player
-
+  # video_player: ^0.10.11+1 # 视频播放 https://github.com/flutter/plugins/tree/master/packages/video_player
+  # flare_flutter: ^2.0.3 # 动画效果 https://github.com/2d-inc/Flare-Flutter
+  # flutter_svg: 0.17.4 # svg加载 https://github.com/dnfield/flutter_svg
 dev_dependencies:
   flutter_test:
     sdk: flutter
