@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tonal/common/helper/helper.dart';
@@ -7,25 +6,19 @@ import 'package:tonal/module/default/page/error_page.dart';
 import 'package:tonal/module/home/page/home_page.dart';
 
 void main() {
-  try {
-    //web平台时会无法通过，所以try catch
-    if (Platform.isAndroid) {
-      //透明状态栏，android默认是半透明
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarColor: Colors.transparent,
-          //启动时状态栏字体颜色，进入后取得是appbar的Brightness
-          statusBarIconBrightness: Brightness.light,
+  if (defaultTargetPlatform == TargetPlatform.android) {
+    //透明状态栏，android默认是半透明
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        //启动时状态栏字体颜色，进入后取得是appbar的Brightness
+        statusBarIconBrightness: Brightness.light,
 //          systemNavigationBarColor: Colors.transparent,
 //          systemNavigationBarIconBrightness: Brightness.dark,
-        ),
-      );
-    }
-  } catch (e) {
-    print(e);
-  } finally {
-    runApp(App());
+      ),
+    );
   }
+  runApp(App());
 }
 
 class App extends StatelessWidget {
@@ -59,8 +52,8 @@ class App extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       darkTheme: ThemeData(
-        primaryColor: Colors.white,
-        primaryColorDark: Colors.white,
+        primaryColor: Colors.black,
+        primaryColorDark: Colors.black,
         platform: TargetPlatform.iOS,
 //        primarySwatch: Colors.brown,//主题样本套件
         visualDensity: VisualDensity.adaptivePlatformDensity,
