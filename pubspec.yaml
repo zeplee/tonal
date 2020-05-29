@@ -25,14 +25,12 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  # cupertino_icons: ^0.1.3
+  # cupertino_icons: ^0.1.3 # adds the Cupertino Icons font for iOS style icons
   # fluttertoast: ^4.0.1 #原生Toast插件 https://github.com/PonnamKarthik/FlutterToast
+  # flutter_screenutil: ^1.1.0 # 屏幕适配 https://github.com/OpenFlutter/flutter_screenutil
 
   # flutter_launcher_icons: ^0.7.5  # 启动图标 https://github.com/fluttercommunity/flutter_launcher_icons
   # flutter_native_splash: ^0.1.9 # android/ios闪屏页 flutter pub run flutter_native_splash:create https://github.com/henriquearthur/flutter_native_splash
-  # flutter_screenutil: ^1.1.0 # 屏幕适配 https://github.com/OpenFlutter/flutter_screenutil
 
   path_provider: ^1.6.9 # 路径管理 https://github.com/flutter/plugins/tree/master/packages/path_provider
   package_info: ^0.4.0+18 # 包信息 https://github.com/flutter/plugins/tree/master/packages/package_info
@@ -54,6 +52,7 @@ dependencies:
   # video_player: ^0.10.11+1 # 视频播放 https://github.com/flutter/plugins/tree/master/packages/video_player
   # flare_flutter: ^2.0.3 # 动画效果 https://github.com/2d-inc/Flare-Flutter
   # flutter_svg: 0.17.4 # svg加载 https://github.com/dnfield/flutter_svg
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
