@@ -35,27 +35,30 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               GestureDetector(
-                  child: Text(
-                    'You have pushed the button this famany times:',
-                    overflow: TextOverflow.clip,
-                    style: TextStyle(
-                      fontFamily: 'Gotham-Book',
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.0,
-                      wordSpacing: 3.0,
-                      textBaseline: TextBaseline.alphabetic,
-                      shadows: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(-1, -1),
-                          blurRadius: 5,
-                        )
-                      ],
-                    ),
+                child: Text(
+                  'You have pushed the button this famany times:',
+                  overflow: TextOverflow.clip,
+                  style: TextStyle(
+                    fontFamily: 'Gotham-Book',
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.0,
+                    wordSpacing: 3.0,
+                    textBaseline: TextBaseline.alphabetic,
+                    shadows: [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(-1, -1),
+                        blurRadius: 5,
+                      )
+                    ],
                   ),
-                  onTap: () => RouteHelper.push(RouteHelper.homeDetailPage,
-                      arguments: {"title": "dfahomeDetailPage"})),
+                ),
+                onTap: () => RouteHelper.push(
+                  RouteHelper.homeDetailPage,
+//                  arguments: {"title": "dfahomeDetailPage"},
+                ),
+              ),
               Text(
                 '$_counter',
                 style: Theme.of(context).textTheme.headline4,

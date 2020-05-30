@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:tonal/common/helper/helper.dart';
 import 'package:tonal/module/default/page/error_page.dart';
@@ -26,6 +27,16 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     ErrorWidget.builder = (FlutterErrorDetails errorDetails) =>
         ErrorPage(errorDetails: errorDetails);
+    debugPaintSizeEnabled = false;
+    debugCheckElevationsEnabled = false;
+    debugInstrumentationEnabled = false;
+    debugPaintBaselinesEnabled = false;
+    debugPaintLayerBordersEnabled = false;
+    debugPaintPointersEnabled = false;
+    debugProfileBuildsEnabled = false;
+    debugProfilePaintsEnabled = false;
+    debugRepaintRainbowEnabled = false;
+    debugRepaintTextRainbowEnabled = false;
     return MaterialApp(
       // 是否显示 Material design 基础布局网格，用来调试 UI 的工具
       debugShowMaterialGrid: false,
