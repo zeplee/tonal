@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tonal/common/helper/helper.dart';
 import 'package:tonal/common/utils/utils.dart';
+import 'package:tonal/common/widget/widget.dart';
 
 //首页
 class HomePage extends StatefulWidget {
@@ -28,6 +29,20 @@ class _HomePageState extends State<HomePage> {
           child: AppBar(
             centerTitle: true,
             title: Text("首页"),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.face),
+                onPressed: () => RouteHelper.push(
+                  RouteHelper.homeRecommendPage,
+                ),
+              ),
+              IconButton(
+                icon: Icon(Icons.developer_mode),
+                onPressed: () {
+                  DebugFloat.show(context);
+                },
+              ),
+            ],
           ),
         ),
         body: Center(
@@ -56,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 onTap: () => RouteHelper.push(
                   RouteHelper.homeDetailPage,
-//                  arguments: {"title": "dfahomeDetailPage"},
+                  arguments: {"title": "dfahomeDetailPage"},
                 ),
               ),
               Text(

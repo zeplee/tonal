@@ -22,7 +22,7 @@ class ErrorPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              '错误页',
+              errorDetails.toString(),
             ),
           ],
         ),

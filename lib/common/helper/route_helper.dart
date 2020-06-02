@@ -5,6 +5,7 @@ import 'package:tonal/module/greet/page/greet_page.dart';
 import 'package:tonal/module/home/page/home_detail2_page.dart';
 import 'package:tonal/module/home/page/home_detail_page.dart';
 import 'package:tonal/module/home/page/home_page.dart';
+import 'package:tonal/module/home/page/home_recommend_page.dart';
 
 //https://www.psvmc.cn/article/2020-05-10-flutter-start-05-route.html
 class RouteHelper {
@@ -17,6 +18,7 @@ class RouteHelper {
   static const homePage = '/HomePage';
   static const homeDetailPage = '/HomePage/HomeDetailPage';
   static const homeDetail2Page = '/HomePage/HomeDetail2Page';
+  static const homeRecommendPage = '/HomePage/HomeRecommendPage';
   static Map<String, WidgetBuilder> routes = {
     defaultPage: (BuildContext context) => UnknownPage(),
     errorPage: (BuildContext context) => ErrorPage(),
@@ -24,6 +26,7 @@ class RouteHelper {
     homePage: (BuildContext context) => HomePage(),
     homeDetailPage: (BuildContext context) => HomeDetailPage(),
     homeDetail2Page: (BuildContext context) => HomeDetail2Page(),
+    homeRecommendPage: (BuildContext context) => HomeRecommendPage(),
   };
 
   static Route<dynamic> onUnknownRoute(RouteSettings setting) {
