@@ -8,24 +8,6 @@ import 'widget.dart';
 class DebugFloat {
   static FloatWidget _float;
 
-  static init(BuildContext context) {
-    if (_float == null) {
-      _float = FloatWidget(
-        child: DragWidget(
-          child: _buildWidget(),
-        ),
-      );
-    }
-    if (Global.IS_DEBUG()) {
-      show(context);
-    }
-//    else {
-//      if (_entry != null) {
-//        _entry.remove();
-//      }
-//    }
-  }
-
   static _buildWidget() {
     return Wrap(
       children: [
@@ -38,9 +20,23 @@ class DebugFloat {
           onPressed: () {
             dismiss();
           },
-        )
+        ),
       ],
     );
+  }
+
+  static init(BuildContext context) {
+    if (_float == null) {
+      _float = FloatWidget(
+        child: DragWidget(
+          offset: Offset(0, 0),
+          child: _buildWidget(),
+        ),
+      );
+    }
+    if (Global.IS_DEBUG()) {
+      show(context);
+    }
   }
 
   static show(BuildContext context) {

@@ -1,3 +1,4 @@
+import 'package:event_bus/event_bus.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,8 @@ void main() {
   }
   runApp(App());
 }
+
+EventBus eventBus = EventBus();
 
 init(BuildContext context) async {
 //  WidgetsFlutterBinding.ensureInitialized();

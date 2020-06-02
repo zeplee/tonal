@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 
-//拖拽组件 http://www.zyiz.net/tech/detail-110265.html
+//拖拽组件
 class DragWidget extends StatefulWidget {
   final Widget child;
+  Offset offset;
 
-  DragWidget({@required this.child});
+  DragWidget({@required this.child, @required this.offset});
 
   @override
   _DragWidgetState createState() => _DragWidgetState();
 }
 
 class _DragWidgetState extends State<DragWidget> {
-  Offset _offset = Offset(0.0, 0.0);
-
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: _offset.dx,
-      top: _offset.dy,
+      left: widget.offset.dx,
+      top: widget.offset.dy,
       child: Draggable(
         //描述的可拖动的组件
         child: widget.child,
@@ -28,7 +27,7 @@ class _DragWidgetState extends State<DragWidget> {
         //松手的时候
         onDraggableCanceled: (Velocity velocity, Offset offset) {
           setState(() {
-            this._offset = _getScope(offset);
+            widget.offset = _getScope(offset);
           });
         },
       ),
@@ -54,16 +53,34 @@ class _DragWidgetState extends State<DragWidget> {
     return Offset(dx, dy);
   }
 }
-//
-//class DragWidget extends StatefulWidget {
-//  @override
-//  _DragWidgetState createState() => _DragWidgetState();
-//}
-//
+
 //class _DragWidgetState extends State<DragWidget> {
-//  Offset offset = Offset(10, kToolbarHeight + 100);
+//  @override
+//  Widget build(BuildContext context) {
+//    return Theme(
+//      data: Theme.of(context).copyWith(
+//        highlightColor: Colors.transparent,
+//        appBarTheme: AppBarTheme.of(context).copyWith(
+//          brightness: Brightness.dark,
+//        ),
+//      ),
+//      child: Positioned(
+//        left: widget.offset.dx,
+//        top: widget.offset.dy,
+//        child: GestureDetector(
+//          onPanUpdate: (detail) {
+//            setState(() {
+//              widget.offset = _getScope(
+//                  MediaQuery.of(context).size, widget.offset, detail.delta);
+//            });
+//          },
+//          child: widget.child,
+//        ),
+//      ),
+//    );
+//  }
 //
-//  Offset _calOffset(Size size, Offset offset, Offset nextOffset) {
+//  Offset _getScope(Size size, Offset offset, Offset nextOffset) {
 //    double dx = 0;
 //    if (offset.dx + nextOffset.dx <= 0) {
 //      dx = 0;
@@ -83,49 +100,6 @@ class _DragWidgetState extends State<DragWidget> {
 //    return Offset(
 //      dx,
 //      dy,
-//    );
-//  }
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return Theme(
-//      data: Theme.of(context).copyWith(
-//        highlightColor: Colors.transparent,
-//        appBarTheme: AppBarTheme.of(context).copyWith(
-//          brightness: Brightness.dark,
-//        ),
-//      ),
-//      child: Positioned(
-//        left: offset.dx,
-//        top: offset.dy,
-//        child: GestureDetector(
-//          onPanUpdate: (detail) {
-//            setState(() {
-//              offset =
-//                  _calOffset(MediaQuery.of(context).size, offset, detail.delta);
-//            });
-//          },
-//          onTap: () {
-//            Scaffold.of(context).showSnackBar(
-//              SnackBar(content: new Text('你戳到我了!')),
-//            );
-//          },
-//          onPanEnd: (detail) {},
-//          child: Container(
-//            height: 50,
-//            width: 50,
-//            color: Colors.blueAccent,
-//            child: Text(
-//              "Box",
-//              style: TextStyle(
-//                fontSize: 20,
-//                color: Colors.black,
-//                decoration: TextDecoration.none,
-//              ),
-//            ),
-//          ),
-//        ),
-//      ),
 //    );
 //  }
 //}
