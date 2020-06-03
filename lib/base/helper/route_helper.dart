@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tonal/module/default/page/unknown_page.dart';
 
 //https://www.psvmc.cn/article/2020-05-10-flutter-start-05-route.html
 class RouteHelper {
   //用此可以代替Navigator.of(context)，用于某些情况没有context对象时的跳转
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey();
-
-  static Route<dynamic> onUnknownRoute(RouteSettings setting) {
-    return MaterialPageRoute(builder: (context) => UnknownPage());
-  }
 
   //打开页面
   static void push(String path, {Object arguments}) {

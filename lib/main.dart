@@ -96,7 +96,7 @@ class App extends StatelessWidget {
       navigatorKey: RouteHelper.navigatorKey,
       routes: Global.routes,
 //      onGenerateRoute: RouteHelper.onGenerateRoute,
-      onUnknownRoute: RouteHelper.onUnknownRoute,
+      onUnknownRoute: Global.onUnknownRoute,
       initialRoute: Global.greetPage,
       home: HomePage(),
     );
