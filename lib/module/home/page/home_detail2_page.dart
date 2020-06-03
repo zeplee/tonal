@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_base/flutter_base.dart';
 
 class HomeDetail2Page extends StatelessWidget {
   @override

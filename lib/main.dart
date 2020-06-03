@@ -1,14 +1,12 @@
 import 'dart:async';
 
-import 'package:flustars/flustars.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_base/helper/helper.dart';
-
-import 'common/global.dart';
-import 'module/module.dart';
+import 'package:tonal/common/common.dart';
+import 'package:tonal/module/module.dart';
 
 void main() {
   if (defaultTargetPlatform == TargetPlatform.android) {
