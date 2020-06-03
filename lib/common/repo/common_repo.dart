@@ -1,8 +1,8 @@
-import 'package:tonal/base/helper/helper.dart';
+import 'package:flutter_base/helper/helper.dart';
 
 class CommonRepo {
   static getRecommendData() {
-    return NetHelper.get(
+    return NetHelper.request(
         path: "/xc_recommend/recommend/homepage/homePageHotRecommendV2.do");
   }
 }

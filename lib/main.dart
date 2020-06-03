@@ -5,8 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_base/helper/helper.dart';
 
-import 'base/helper/helper.dart';
 import 'common/global.dart';
 import 'module/module.dart';
 

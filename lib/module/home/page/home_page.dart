@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tonal/base/helper/helper.dart';
-import 'package:tonal/base/utils/utils.dart';
-import 'package:tonal/base/widget/widget.dart';
+import 'package:flutter_base/helper/helper.dart';
+import 'package:flutter_base/utils/utils.dart';
+import 'package:flutter_base/widget/widget.dart';
 import 'package:tonal/common/global.dart';
 
 //首页
