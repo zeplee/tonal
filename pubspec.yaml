@@ -25,20 +25,26 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # flutter_launcher_icons: ^0.7.5  # 启动图标 https://github.com/fluttercommunity/flutter_launcher_icons
-  # flutter_native_splash: ^0.1.9 # android/ios闪屏页 flutter pub run flutter_native_splash:create https://github.com/henriquearthur/flutter_native_splash
+  #  flutter_launcher_icons: ^0.7.5  # android/ios启动图标 flutter pub run flutter_launcher_icons:main https://github.com/fluttercommunity/flutter_launcher_icons
+  #  flutter_native_splash: ^0.1.9 # android/ios闪屏页 flutter pub run flutter_native_splash:create https://github.com/henriquearthur/flutter_native_splash
 
   flutter_base:
     git:
       url: https://github.com/Li-Zepeng/flutter_base.git
       ref: master
 
-  # video_player: ^0.10.11+1 # 视频播放 https://github.com/flutter/plugins/tree/master/packages/video_player
-  # flare_flutter: ^2.0.3 # 动画效果 https://github.com/2d-inc/Flare-Flutter
+#  video_player: ^0.10.11+1 # 视频播放 https://github.com/flutter/plugins/tree/master/packages/video_player
+#  flare_flutter: ^2.0.3 # 动画效果 https://github.com/2d-inc/Flare-Flutter
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+#flutter_icons:
+#  android: true
+#  ios: true
+#  web: true
+#  image_path: "assets/images/ic_launcher.png"
 
 #flutter_native_splash:
 #  color: "#ffffff"
