@@ -1,12 +1,12 @@
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
-import 'package:tonal/common/global.dart';
+import 'package:tonal/base/constants.dart';
 
 import 'widget.dart';
 
 ///调试悬浮球
 class DebugFloat {
-  static FloatWidget _float;
+  static CommonFloat _float;
 
   static _buildWidget() {
     return Wrap(
@@ -27,25 +27,25 @@ class DebugFloat {
 
   static init(BuildContext context) {
     if (_float == null) {
-      _float = FloatWidget(
-        child: DragWidget(
+      _float = CommonFloat(
+        child: CommonDrag(
           offset: Offset(0, 0),
           child: _buildWidget(),
         ),
       );
     }
-    if (Global.IS_DEBUG()) {
+    if (Constants.IS_DEBUG()) {
       show(context);
     }
   }
 
   static show(BuildContext context) {
-    SpUtil.putBool(Global.SPKEY_IS_DEBUG, true);
-    _float.show(context);
+    SpUtil.putBool(Constants.SPKEY_IS_DEBUG, true);
+    _float?.show(context);
   }
 
   static dismiss() {
-    SpUtil.putBool(Global.SPKEY_IS_DEBUG, false);
-    _float.dismiss();
+    SpUtil.putBool(Constants.SPKEY_IS_DEBUG, false);
+    _float?.dismiss();
   }
 }

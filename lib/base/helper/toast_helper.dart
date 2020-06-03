@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tonal/common/widget/widget.dart';
+import 'package:tonal/base/widget/widget.dart';
 
 //吐司
 class ToastHelper {
-  static FloatWidget _float;
+  static CommonFloat _float;
 
   static Widget _getDefaultWidget(BuildContext context, String msg) {
     return Container(
@@ -31,7 +31,7 @@ class ToastHelper {
 
   static show(BuildContext context, String msg, {int duration = 2}) {
     if (_float == null) {
-      _float = FloatWidget(child: _getDefaultWidget(context, msg));
+      _float = CommonFloat(child: _getDefaultWidget(context, msg));
     }
     _float.show(context, duration: duration);
   }

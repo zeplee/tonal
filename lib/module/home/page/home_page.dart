@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tonal/common/helper/helper.dart';
-import 'package:tonal/common/utils/utils.dart';
-import 'package:tonal/common/widget/widget.dart';
+import 'package:tonal/base/helper/helper.dart';
+import 'package:tonal/base/utils/utils.dart';
+import 'package:tonal/base/widget/widget.dart';
+import 'package:tonal/common/global.dart';
 
 //首页
 class HomePage extends StatefulWidget {
@@ -33,7 +34,7 @@ class _HomePageState extends State<HomePage> {
               IconButton(
                 icon: Icon(Icons.face),
                 onPressed: () => RouteHelper.push(
-                  RouteHelper.homeRecommendPage,
+                  Global.homeRecommendPage,
                 ),
               ),
               IconButton(
@@ -70,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 onTap: () => RouteHelper.push(
-                  RouteHelper.homeDetailPage,
+                  Global.homeDetailPage,
                   arguments: {"title": "dfahomeDetailPage"},
                 ),
               ),

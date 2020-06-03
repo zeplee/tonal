@@ -1,13 +1,14 @@
-import 'package:event_bus/event_bus.dart';
+import 'dart:async';
+
 import 'package:flustars/flustars.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:tonal/common/helper/helper.dart';
-import 'package:tonal/common/widget/widget.dart';
-import 'package:tonal/module/default/page/error_page.dart';
-import 'package:tonal/module/home/page/home_page.dart';
+
+import 'base/helper/helper.dart';
+import 'common/global.dart';
+import 'module/module.dart';
 
 void main() {
   if (defaultTargetPlatform == TargetPlatform.android) {
@@ -22,13 +23,24 @@ void main() {
       ),
     );
   }
-  runApp(App());
+  runZoned(
+    () async {
+      await init();
+      runApp(App());
+    },
+    zoneSpecification: ZoneSpecification(
+      print: (Zone self, ZoneDelegate parent, Zone zone, String line) {
+//        collectLog(line); //收集日志
+      },
+    ),
+    onError: (Object obj, StackTrace stack) {
+//      collectError(obj, stack); //收集错误
+    },
+  );
 }
 
-EventBus eventBus = EventBus();
-
-init(BuildContext context) async {
-//  WidgetsFlutterBinding.ensureInitialized();
+init() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await SpUtil.getInstance();
   ErrorWidget.builder = (FlutterErrorDetails errorDetails) =>
       ErrorPage(errorDetails: errorDetails);
@@ -42,13 +54,12 @@ init(BuildContext context) async {
   debugProfilePaintsEnabled = false;
   debugRepaintRainbowEnabled = false;
   debugRepaintTextRainbowEnabled = false;
-  DebugFloat.init(context);
+//  DebugFloat.init(context);
 }
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    init(context);
     return MaterialApp(
       // 是否显示 Material design 基础布局网格，用来调试 UI 的工具
       debugShowMaterialGrid: false,
@@ -83,10 +94,10 @@ class App extends StatelessWidget {
       ),
       themeMode: ThemeMode.system,
       navigatorKey: RouteHelper.navigatorKey,
-      routes: RouteHelper.routes,
+      routes: Global.routes,
 //      onGenerateRoute: RouteHelper.onGenerateRoute,
       onUnknownRoute: RouteHelper.onUnknownRoute,
-      initialRoute: RouteHelper.greetPage,
+      initialRoute: Global.greetPage,
       home: HomePage(),
     );
   }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 //悬浮组件-可定时消失,可多次添加
-class FloatWidget {
+class CommonFloat {
   OverlayEntry _entry;
   final Widget child;
 
-  FloatWidget({@required this.child});
+  CommonFloat({@required this.child});
 
   show(BuildContext context, {int duration, bool isRepeat = false}) {
     if (!isRepeat) {

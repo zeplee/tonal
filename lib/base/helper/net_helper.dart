@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:tonal/base/constants.dart';
 import 'package:tonal/common/entity/result_entity.dart';
-import 'package:tonal/common/global.dart';
 
 export 'package:dio/dio.dart';
 
@@ -284,7 +284,7 @@ class NetHelper {
 class LogsInterceptor extends InterceptorsWrapper {
   @override
   onRequest(RequestOptions options) async {
-    if (Global.IS_DEBUG()) {
+    if (Constants.IS_DEBUG()) {
       print('request url: ${options.path}');
       print('request header: ${options.headers.toString()}');
       if (options.data != null) {
@@ -297,7 +297,7 @@ class LogsInterceptor extends InterceptorsWrapper {
 
   @override
   onResponse(Response response) async {
-    if (Global.IS_DEBUG()) {
+    if (Constants.IS_DEBUG()) {
       if (response != null) {
         print('response: ${response.toString()}');
         print('\r\n');
@@ -308,7 +308,7 @@ class LogsInterceptor extends InterceptorsWrapper {
 
   @override
   onError(DioError error) async {
-    if (Global.IS_DEBUG()) {
+    if (Constants.IS_DEBUG()) {
       print('request error: ${error.toString()}');
       print('request error info: ${error.response?.toString() ?? ""}');
     }

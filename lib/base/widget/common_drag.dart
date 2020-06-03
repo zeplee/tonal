@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 //拖拽组件
-class DragWidget extends StatefulWidget {
+class CommonDrag extends StatefulWidget {
   final Widget child;
   Offset offset;
 
-  DragWidget({@required this.child, @required this.offset});
+  CommonDrag({@required this.child, @required this.offset});
 
   @override
-  _DragWidgetState createState() => _DragWidgetState();
+  _CommonDragState createState() => _CommonDragState();
 }
 
-class _DragWidgetState extends State<DragWidget> {
+class _CommonDragState extends State<CommonDrag> {
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -54,7 +54,7 @@ class _DragWidgetState extends State<DragWidget> {
   }
 }
 
-//class _DragWidgetState extends State<DragWidget> {
+//class _CommonDragState extends State<CommonDrag> {
 //  @override
 //  Widget build(BuildContext context) {
 //    return Theme(
