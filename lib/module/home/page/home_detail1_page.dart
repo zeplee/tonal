@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-//详情页
-class HomeDetailPage extends StatelessWidget {
+///详情页-StatefulBuilder(实现最简单的statefulWidget)
+class HomeDetail1Page extends StatelessWidget {
   Map arguments = {};
   int _counter = 0;
 

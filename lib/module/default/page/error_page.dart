@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-//错误页
+///错误页
 class ErrorPage extends StatelessWidget {
   ErrorPage({Key key, this.errorDetails}) : super(key: key);
   final FlutterErrorDetails errorDetails;
@@ -10,14 +10,20 @@ class ErrorPage extends StatelessWidget {
 //    print("FlutterErrorDetails" +
 //        (errorDetails == null ? "" : errorDetails.toString()));
     return Scaffold(
-      appBar: PreferredSize(
+      appBar: _buildAppBar(),
+      body: _buildBody(),
+    );
+  }
+
+  _buildAppBar() => PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: AppBar(
           centerTitle: true,
           title: Text("错误页"),
         ),
-      ),
-      body: Center(
+      );
+
+  _buildBody() => Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -26,7 +32,5 @@ class ErrorPage extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
+      );
 }

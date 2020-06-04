@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HomeRecommendPage extends StatelessWidget {
+class HomeDetail7Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,6 +12,7 @@ class HomeRecommendPage extends StatelessWidget {
         ),
       ),
       body: ListView.builder(
+        //去除越界效果
         physics: ClampingScrollPhysics(),
         itemBuilder: (context, i) {
           return Text('你好');

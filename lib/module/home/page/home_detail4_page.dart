@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/flutter_base.dart';
 
-///详情页-ChangeNotifierProvider(ChangeNotifierProvider替换ValueListenableProvider的简单用法)
-class HomeDetail2Page extends StatelessWidget {
+///详情页-ValueListenableProvider(ValueListenableProvider+ValueNotifier状态管理框架实现局部刷新,只支持单一数据，但是像原生的ValueListenableBuilder用法很像)
+class HomeDetail4Page extends StatelessWidget {
+  final ValueNotifier<int> _counter = ValueNotifier(0);
+
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<Counter>(
-      create: (context) => Counter(),
+    return ValueListenableProvider(
+      create: (context) => _counter,
       child: Builder(
         builder: (BuildContext context) {
           return Scaffold(
@@ -21,27 +23,19 @@ class HomeDetail2Page extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text("${Provider.of<Counter>(context, listen: true).value}"),
+                  Consumer<int>(
+                    builder: (context, counter, child) => Text("${counter}"),
+                  ),
                 ],
               ),
             ),
             floatingActionButton: FloatingActionButton(
-              onPressed: () =>
-                  Provider.of<Counter>(context, listen: false).increment(),
+              onPressed: () => _counter.value += 1,
               child: Icon(Icons.add),
             ),
           );
         },
       ),
     );
-  }
-}
-
-class Counter with ChangeNotifier {
-  int value = 0;
-
-  void increment() {
-    value++;
-    notifyListeners();
   }
 }
