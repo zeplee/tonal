@@ -55,7 +55,8 @@ class GreetPage extends StatelessWidget {
                 width: 100,
               ),
               onTap: () {
-                ToastHelper.show(context, "退出欢迎页");
+                ToastHelper.show(
+                    context, ToastHelper.getDefault(context, "退出欢迎页"));
                 RouteHelper.pop();
               },
             ),

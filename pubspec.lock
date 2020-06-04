@@ -151,7 +151,7 @@ packages:
     description:
       path: "."
       ref: master
-      resolved-ref: "88da68b6cfb9d3f4be8b72d41af029d282554ee6"
+      resolved-ref: fd48908301b0a16b7bfd72d4064ffae172d278b9
       url: "https://github.com/Li-Zepeng/flutter_base.git"
     source: git
     version: "0.0.1"

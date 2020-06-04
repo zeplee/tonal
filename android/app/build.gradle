@@ -42,13 +42,16 @@ android {
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+//        resConfigs 'zh' //去除资源（包括依赖）中的外文资源
     }
 
     buildTypes {
         debug {
+//            ndk { abiFilters "armeabi-v7a", "x86" }
             signingConfig signingConfigs.debug
         }
         release {
+//            ndk { abiFilters "armeabi-v7a" }
             signingConfig signingConfigs.debug
         }
     }

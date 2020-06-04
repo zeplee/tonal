@@ -8,49 +8,41 @@ class HomeDetail3Page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        //拦截返回
-        return false;
-      },
-      child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50.0),
-          child: AppBar(
-            automaticallyImplyLeading: false, //是否自动加返回键
-            centerTitle: true,
-            title: Text("HomeDetail3Page"),
-          ),
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.0),
+        child: AppBar(
+          automaticallyImplyLeading: false, //是否自动加返回键
+          centerTitle: true,
+          title: Text("HomeDetail3Page"),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              GestureDetector(
-                child: Text(
-                  'goBack',
-                ),
-                onTap: () {
-                  ToastHelper.show(context, "退出欢迎页");
-                  RouteHelper.pop();
-                },
-              ),
-              ValueListenableBuilder<int>(
-                valueListenable: _counter,
-                builder: (BuildContext context, int value, Widget child) =>
-                    Text(
-                  '$value',
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-              ),
-            ],
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => _counter.value++,
-          child: Icon(Icons.add),
-        ), // This trailing comma makes auto-formatting nicer for build methods.
       ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            GestureDetector(
+              child: Text(
+                'goBack',
+              ),
+              onTap: () {
+                RouteHelper.pop();
+              },
+            ),
+            ValueListenableBuilder<int>(
+              valueListenable: _counter,
+              builder: (BuildContext context, int value, Widget child) => Text(
+                '$value',
+                style: Theme.of(context).textTheme.headline4,
+              ),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _counter.value++,
+        child: Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

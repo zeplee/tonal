@@ -4,11 +4,32 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_base/helper/helper.dart';
+import 'package:flutter_base/flutter_base.dart';
 import 'package:tonal/common/common.dart';
 import 'package:tonal/module/module.dart';
 
 void main() {
+  _handleDebug();
+  _handleUi();
+  _handleSdk();
+  _handleError();
+}
+
+_handleDebug() {
+  debugPaintSizeEnabled = false;
+  debugCheckElevationsEnabled = false;
+  debugInstrumentationEnabled = false;
+  debugPaintBaselinesEnabled = false;
+  debugPaintLayerBordersEnabled = false;
+  debugPaintPointersEnabled = false;
+  debugProfileBuildsEnabled = false;
+  debugProfilePaintsEnabled = false;
+  debugRepaintRainbowEnabled = false;
+  debugRepaintTextRainbowEnabled = false;
+//  DebugFloat.init(context);
+}
+
+_handleUi() {
   if (defaultTargetPlatform == TargetPlatform.android) {
     //透明状态栏，android默认是半透明
     SystemChrome.setSystemUIOverlayStyle(
@@ -21,38 +42,36 @@ void main() {
       ),
     );
   }
+}
+
+_handleSdk() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SpUtil.getInstance();
+}
+
+_handleError() {
+  ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
+    //收集Flutter异常发送给runZoned的onError
+    Zone.current
+        .handleUncaughtError(errorDetails.exception, errorDetails.stack);
+    //定制错误页面
+    return ErrorPage(errorDetails: errorDetails);
+  };
   runZoned(
-    () async {
-      await init();
-      runApp(App());
-    },
+    () => runApp(App()),
     zoneSpecification: ZoneSpecification(
       print: (Zone self, ZoneDelegate parent, Zone zone, String line) {
-//        collectLog(line); //收集日志
+        if (!Constants.IS_DEBUG()) {
+          // _reportLog(line); //收集日志
+        }
       },
     ),
     onError: (Object obj, StackTrace stack) {
-//      collectError(obj, stack); //收集错误
+      if (!Constants.IS_DEBUG()) {
+        // _reportError(obj, stack); //收集Dart异常
+      }
     },
   );
-}
-
-init() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await SpUtil.getInstance();
-  ErrorWidget.builder = (FlutterErrorDetails errorDetails) =>
-      ErrorPage(errorDetails: errorDetails);
-  debugPaintSizeEnabled = false;
-  debugCheckElevationsEnabled = false;
-  debugInstrumentationEnabled = false;
-  debugPaintBaselinesEnabled = false;
-  debugPaintLayerBordersEnabled = false;
-  debugPaintPointersEnabled = false;
-  debugProfileBuildsEnabled = false;
-  debugProfilePaintsEnabled = false;
-  debugRepaintRainbowEnabled = false;
-  debugRepaintTextRainbowEnabled = false;
-//  DebugFloat.init(context);
 }
 
 class App extends StatelessWidget {
@@ -76,19 +95,39 @@ class App extends StatelessWidget {
       //android 最近列表中的背景色
       color: Colors.white,
       theme: ThemeData(
-        //开启侧滑返回
-        platform: TargetPlatform.iOS,
+        platform: TargetPlatform.android,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        pageTransitionsTheme: Global.pageTransitionsTheme,
+        // primarySwatch: Colors.blue,//主题样本套件
         primaryColor: Colors.white,
         primaryColorDark: Colors.white,
-//        primarySwatch: Colors.blue,//主题样本套件
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+//        splashColor: Colors.red,
+//        highlightColor: Colors.red,
+//        dividerColor: Colors.pink,
+//        cursorColor: Colors.red,
+//        textSelectionColor: Colors.red,
+//        hintColor: Colors.indigoAccent,
+//        errorColor: Colors.indigoAccent,
+//        canvasColor: Colors.yellow,
+//        primaryColorBrightness: Brightness.dark,
       ),
       darkTheme: ThemeData(
+        //设置为ios,那么所有平台的列表都有越界回弹，列表滑动有滑动效果增量，有侧滑返回等ios平台的效果
+        platform: TargetPlatform.iOS,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+//        pageTransitionsTheme: Global.pageTransitionsTheme,
+        // primarySwatch: Colors.brown,//主题样本套件
         primaryColor: Colors.black,
         primaryColorDark: Colors.black,
-        platform: TargetPlatform.iOS,
-//        primarySwatch: Colors.brown,//主题样本套件
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+//        splashColor: Colors.red,
+//        highlightColor: Colors.red,
+//        dividerColor: Colors.pink,
+//        cursorColor: Colors.red,
+//        textSelectionColor: Colors.red,
+//        hintColor: Colors.indigoAccent,
+//        errorColor: Colors.indigoAccent,
+//        canvasColor: Colors.yellow,
+//        primaryColorBrightness: Brightness.dark,
       ),
       themeMode: ThemeMode.system,
       navigatorKey: RouteHelper.navigatorKey,

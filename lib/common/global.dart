@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tonal/common/common.dart';
 import 'package:tonal/module/module.dart';
 
 ///全局状态
@@ -49,4 +50,28 @@ class Global {
 //        AppPageRouteBuilder(
 //            builder: (context) => OnboardingScreen(), settings: settings);
   }
+
+//        onGenerateRoute: (setting) => PageRouteBuilder(
+//            pageBuilder: (BuildContext context, _, __) {
+//              return MainPage();
+//            },
+//            opaque: false,
+//            transitionDuration: new Duration(milliseconds: 200),
+//            transitionsBuilder:
+//                (___, Animation<double> animation, ____, Widget child) {
+//              return new FadeTransition(
+//                opacity: animation,
+//                child: new ScaleTransition(
+//                  scale: new Tween<double>(begin: 0.5, end: 1.0)
+//                      .animate(animation),
+//                  child: child,
+//                ),
+//              );
+//            }),
+
+  //会清掉ios的侧滑返回
+  static var pageTransitionsTheme = PageTransitionsTheme(builders: {
+    TargetPlatform.android: FadePageTransitionsBuilder(),
+    TargetPlatform.iOS: FadePageTransitionsBuilder(),
+  });
 }
