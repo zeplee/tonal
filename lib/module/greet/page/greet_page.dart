@@ -9,16 +9,16 @@ class GreetPage extends StatelessWidget {
     return WillPopScope(
       onWillPop: _onBack(),
       child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-//            image: NetworkImage(
-//                'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg'),
-            image: CachedNetworkImageProvider(
-              'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg',
-            ),
-            fit: BoxFit.cover,
-          ),
-        ),
+//        decoration: BoxDecoration(
+//          image: DecorationImage(
+////            image: NetworkImage(
+////                'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg'),
+//            image: CachedNetworkImageProvider(
+//              'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg',
+//            ),
+//            fit: BoxFit.cover,
+//          ),
+//        ),
         child: Scaffold(
           //背景色改成透明
           backgroundColor: Colors.transparent,

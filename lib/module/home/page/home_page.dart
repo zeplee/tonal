@@ -38,14 +38,19 @@ class HomePage extends StatelessWidget {
         //去除越界效果
         physics: ClampingScrollPhysics(),
         itemBuilder: (context, i) {
-          return FlatButton(
-            child: Text(items.values.toList()[i]),
-            onPressed: () {
-              RouteHelper.push(
-                items.keys.toList()[i],
-                arguments: {"title": "dfahomeDetailPage"},
-              );
-            },
+          return SizedBox(
+            height: 40,
+            child: FlatButton(
+              color: Colors.blue,
+              shape: StadiumBorder(),
+              child: Text(items.values.toList()[i]),
+              onPressed: () {
+                RouteHelper.push(
+                  items.keys.toList()[i],
+                  arguments: {"title": "dfahomeDetailPage"},
+                );
+              },
+            ),
           );
         },
       );
