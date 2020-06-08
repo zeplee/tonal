@@ -11,14 +11,14 @@ class HomePage extends StatelessWidget {
     'ValueListenableProvider': Global.homeDetail4Page,
     '自创ValueNotifier': Global.homeDetail5Page,
     'StatefulWidget': Global.homeDetail6Page,
-    '网络列表': Global.homeDetail7Page,
+    'StatefulWidget+': Global.homeDetail7Page,
     '画板': Global.homeDetail8Page,
     '动画-AnimatedOpacity': Global.homeDetail9Page,
     '动画-AnimatedContainer': Global.homeDetail10Page,
     '动画-Transition': Global.homeDetail11Page,
     '小组件': Global.homeDetail12Page,
-    'Drawer': Global.homeDetail13Page,
-    '搜索': Global.homeDetail14Page,
+    '本地列表': Global.homeDetail13Page,
+    '网络列表': Global.homeDetail14Page,
     '商城模版': Global.shopIndexPage,
   };
 

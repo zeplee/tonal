@@ -1,28 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeDetail14Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: PreferredSize(
-            child: AppBar(
-              leading: IconButton(
-                icon: Icon(Icons.mms),
-                tooltip: 'Navigation menu',
-                onPressed: () {},
-              ),
-              title: TextField(
-                  onSubmitted: (String text) {},
-                  decoration: InputDecoration(hintText: "search hint")),
-              actions: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.list),
-                  onPressed: () {},
-                ),
-              ],
-            ),
-            preferredSize: Size.fromHeight(40.0)),
+        appBar: _buildAppBar(),
         body: ShopBody(),
+      );
+
+  _buildAppBar() => PreferredSize(
+        preferredSize: Size.fromHeight(50),
+        child: AppBar(
+          centerTitle: true,
+          title: Text("prodpage"),
+        ),
       );
 }
 
@@ -99,13 +89,8 @@ class ShopBodyListItemState extends State<ShopBodyListItem> {
   Widget build(BuildContext context) => Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text('Column One', style: Theme.of(context).primaryTextTheme.title),
-          IconButton(
-            icon: Icon(Icons.backspace),
-            onPressed: () {
-              _saveSp();
-            },
-          ),
+          Text('Column One',
+              style: Theme.of(context).primaryTextTheme.headline6),
           Center(
             child: TextField(
               onSubmitted: (String text) {
@@ -124,25 +109,18 @@ class ShopBodyListItemState extends State<ShopBodyListItem> {
             ),
           ),
           ListTile(
-              title: Text(
-                widget.data,
-                style: TextStyle(fontSize: 10.0),
-              ),
-              trailing: IconButton(
-                icon:
-                    Icon(_isFavorite ? Icons.favorite_border : Icons.favorite),
-                onPressed: () => setState(() => _isFavorite = !_isFavorite),
-              ),
-              onTap: () {
-                print("tap");
-              })
+            title: Text(
+              widget.data,
+              style: TextStyle(fontSize: 10.0),
+            ),
+            trailing: IconButton(
+              icon: Icon(_isFavorite ? Icons.favorite_border : Icons.favorite),
+              onPressed: () => setState(() => _isFavorite = !_isFavorite),
+            ),
+            onTap: () {
+              print("tap");
+            },
+          )
         ],
       );
-
-  _saveSp() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    int counter = (prefs.getInt('counter') ?? 0) + 1;
-    print('Pressed $counter times.');
-    prefs.setInt('counter', counter);
-  }
 }

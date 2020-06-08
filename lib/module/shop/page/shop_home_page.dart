@@ -340,19 +340,19 @@ class ShopHomeBodyBottomWidget extends StatefulWidget {
 class ShopHomeBodyBottomState extends State<ShopHomeBodyBottomWidget> {
   final _datas = [
     'fdasnifds',
+    'fdasniffdds',
     'fdasnifds',
     'fdasnifds',
-    'fdasnifds',
-    'fdasnifds',
+    'fdasfdsanifds',
     'fdasnifds',
     'fdasnifds',
     'fdasnifds',
     'fdasnifds',
     'fdafas',
+    'fdaffdasas',
+    'fdafdas',
     'fdafas',
-    'fdafas',
-    'fdafas',
-    'fdafas',
+    'fdaffeas',
   ];
 
   @override

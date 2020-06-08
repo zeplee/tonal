@@ -57,32 +57,21 @@ class ShopCategoryBodyState extends State<ShopCategoryBody> {
                 //绘制到结尾了
                 _datas.addAll(_datas.take(10));
               }
-              return ShopCategoryListItem(_datas[index]);
+              return _buildItem(_datas[index]);
             }
             // else {
             //   //有限列表
             //   return CategoryListItem(_datas[index]);
             // }
           });
-}
 
-class ShopCategoryListItem extends StatefulWidget {
-  final data;
-
-  ShopCategoryListItem(this.data) : super();
-
-  @override
-  State<StatefulWidget> createState() => ShopCategoryItemState();
-}
-
-class ShopCategoryItemState extends State<ShopCategoryListItem> {
-  @override
-  Widget build(BuildContext context) => ListTile(
-      title: Text(
-        widget.data['title'],
-        style: TextStyle(fontSize: 10.0),
-      ),
-      onTap: () {
-        Navigator.of(context).pushNamed(Global.shopShopPage);
-      });
+  _buildItem(data) => ListTile(
+        title: Text(
+          data['title'],
+          style: TextStyle(fontSize: 10.0),
+        ),
+        onTap: () {
+          Navigator.of(context).pushNamed(Global.shopShopPage);
+        },
+      );
 }

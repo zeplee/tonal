@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_base/flutter_base.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tonal/common/common.dart';
 
 ///小组件
@@ -15,14 +16,24 @@ class HomeDetail12Page extends StatelessWidget {
     return Scaffold(
       appBar: _buildAppBar(),
       body: _buildBody(),
+      endDrawer: _buildDrawer(context),
     );
   }
 
   _buildAppBar() => PreferredSize(
-        preferredSize: Size.fromHeight(50),
+        preferredSize: Size.fromHeight(40.0),
         child: AppBar(
-          centerTitle: true,
-          title: Text("prodpage"),
+          title: TextField(
+              onSubmitted: (String text) {},
+              decoration: InputDecoration(hintText: "search hint")),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.list),
+              onPressed: () {
+                _saveSp();
+              },
+            ),
+          ],
         ),
       );
 
@@ -104,4 +115,37 @@ class HomeDetail12Page extends StatelessWidget {
           );
         },
       );
+
+  _buildDrawer(BuildContext context) => Drawer(
+        child: ListView(
+          //少量列表不需要使用listview.builder
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Drawer Header'),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('Item 1'),
+              onTap: () {
+                //close the drawer
+                RouteHelper.pop();
+//                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Item 2'),
+            ),
+          ],
+        ),
+      );
+
+  _saveSp() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int counter = (prefs.getInt('counter') ?? 0) + 1;
+    print('Pressed $counter times.');
+    prefs.setInt('counter', counter);
+  }
 }

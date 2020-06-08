@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class ShopCartsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text('carts'),
-        ),
+        appBar: _buildAppBar(),
         body: ShopCartsBody(),
+      );
+
+  _buildAppBar() => PreferredSize(
+        preferredSize: Size.fromHeight(50),
+        child: AppBar(
+          centerTitle: true,
+          title: Text("carts"),
+        ),
       );
 }
 
@@ -55,7 +60,7 @@ class ShopCartsBodyState extends State<ShopCartsBody> {
             //绘制到结尾了
             _datas.addAll(_datas.take(10));
           }
-          return ShopCartsBodyListItem(_datas[index]);
+          return _buildItem(_datas[index]);
         }
         // else {
         //   //有限列表
@@ -65,69 +70,12 @@ class ShopCartsBodyState extends State<ShopCartsBody> {
         //   }
         // }
       });
-}
 
-class ShopCartsBodyListItem extends StatefulWidget {
-  final String data;
-
-  ShopCartsBodyListItem(this.data) : super();
-
-  @override
-  State<StatefulWidget> createState() => ShopCartsBodyListItemState();
-}
-
-class ShopCartsBodyListItemState extends State<ShopCartsBodyListItem> {
-  var _isFavorite = false;
-  String _errorText;
-
-  @override
-  Widget build(BuildContext context) => Column(
+  _buildItem(str) => Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text('Column One', style: Theme.of(context).primaryTextTheme.title),
-          IconButton(
-            icon: Icon(Icons.backspace),
-            onPressed: () {
-              _saveSp();
-            },
-          ),
-          Center(
-            child: TextField(
-              onSubmitted: (String text) {
-                setState(() {
-                  if (!RegExp(
-                          r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
-                      .hasMatch(text)) {
-                    _errorText = 'Error: This is not an email';
-                  } else {
-                    _errorText = null;
-                  }
-                });
-              },
-              decoration: InputDecoration(
-                  hintText: "This is a hint", errorText: _errorText),
-            ),
-          ),
-          ListTile(
-              title: Text(
-                widget.data,
-                style: TextStyle(fontSize: 10.0),
-              ),
-              trailing: IconButton(
-                icon:
-                    Icon(_isFavorite ? Icons.favorite_border : Icons.favorite),
-                onPressed: () => setState(() => _isFavorite = !_isFavorite),
-              ),
-              onTap: () {
-                print("tap");
-              })
+          Text('Column One' + str,
+              style: Theme.of(context).primaryTextTheme.headline6),
         ],
       );
-
-  _saveSp() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    int counter = (prefs.getInt('counter') ?? 0) + 1;
-    print('Pressed $counter times.');
-    prefs.setInt('counter', counter);
-  }
 }
