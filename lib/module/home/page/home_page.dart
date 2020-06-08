@@ -5,14 +5,21 @@ import 'package:tonal/common/common.dart';
 ///首页
 class HomePage extends StatelessWidget {
   final items = {
-    Global.homeDetail1Page: 'StatefulBuilder',
-    Global.homeDetail2Page: 'ChangeNotifierProvider',
-    Global.homeDetail3Page: 'ValueListenableBuilder',
-    Global.homeDetail4Page: 'ValueListenableProvider',
-    Global.homeDetail5Page: '自创ValueNotifier',
-    Global.homeDetail6Page: 'StatefulWidget',
-    Global.homeDetail7Page: '网络列表',
-    Global.shopIndexPage: '商城模版',
+    'StatefulBuilder': Global.homeDetail1Page,
+    'ChangeNotifierProvider': Global.homeDetail2Page,
+    'ValueListenableBuilder': Global.homeDetail3Page,
+    'ValueListenableProvider': Global.homeDetail4Page,
+    '自创ValueNotifier': Global.homeDetail5Page,
+    'StatefulWidget': Global.homeDetail6Page,
+    '网络列表': Global.homeDetail7Page,
+    '画板': Global.homeDetail8Page,
+    '动画-AnimatedOpacity': Global.homeDetail9Page,
+    '动画-AnimatedContainer': Global.homeDetail10Page,
+    '动画-Transition': Global.homeDetail11Page,
+    '小组件': Global.homeDetail12Page,
+    'Drawer': Global.homeDetail13Page,
+    '搜索': Global.homeDetail14Page,
+    '商城模版': Global.shopIndexPage,
   };
 
   @override
@@ -44,10 +51,10 @@ class HomePage extends StatelessWidget {
             child: FlatButton(
               color: Colors.blue,
               shape: StadiumBorder(),
-              child: Text(items.values.toList()[i]),
+              child: Text(items.keys.toList()[i]),
               onPressed: () {
                 RouteHelper.push(
-                  items.keys.toList()[i],
+                  items.values.toList()[i],
                   arguments: {"title": "dfahomeDetailPage"},
                 );
               },

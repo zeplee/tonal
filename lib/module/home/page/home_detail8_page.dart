@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
 
-class ShopAboutPage extends StatelessWidget {
+///画板
+class HomeDetail8Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text('ShopAboutPage'),
-        ),
+        appBar: _buildAppBar(),
         body: ShopAboutBody(),
       );
 }
 
+_buildAppBar() => PreferredSize(
+      preferredSize: Size.fromHeight(50),
+      child: AppBar(
+        centerTitle: true,
+        title: Text("HomeDetail8Page"),
+      ),
+    );
+
 class ShopAboutBody extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => AboutBodyState();
+  State<StatefulWidget> createState() => ShopAboutBodyState();
 }
 
-class AboutBodyState extends State<ShopAboutBody> {
+class ShopAboutBodyState extends State<ShopAboutBody> {
   List<Offset> _points = <Offset>[];
 
   @override

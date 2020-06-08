@@ -17,9 +17,6 @@ samples, guidance on mobile development, and a full API reference.
 
 https://api.flutter.dev/flutter/rendering/debugCheckElevationsEnabled.html
 
-#TickerProviderStateMixin的界面的floatingActionButton不设置这个就会黑屏-why
-heroTag: 'fda',
-
 #https://www.jianshu.com/p/047eb78dce53
 #顶部有一个listview，那么就会有问题，可能是listview里面默认加了一个padding
 padding: EdgeInsets.all(0.0)

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tonal/common/common.dart';
 
-class ShopShopPage extends StatelessWidget {
+class HomeDetail14Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: PreferredSize(
@@ -10,28 +9,15 @@ class ShopShopPage extends StatelessWidget {
               leading: IconButton(
                 icon: Icon(Icons.mms),
                 tooltip: 'Navigation menu',
-                onPressed: () =>
-                    Navigator.of(context).pushNamed(Global.shopCategoryPage),
+                onPressed: () {},
               ),
               title: TextField(
-                  onSubmitted: (String text) {
-                    if (text.isNotEmpty) {
-                      Navigator.of(context).pushNamed(Global.shopSearchPage);
-                    }
-                  },
+                  onSubmitted: (String text) {},
                   decoration: InputDecoration(hintText: "search hint")),
               actions: <Widget>[
                 IconButton(
-                  icon: Icon(Icons.face),
-                  onPressed: () =>
-                      Navigator.of(context).pushNamed(Global.shopCartsPage),
-//                  Navigator.of(context).push(MaterialPageRoute(
-//                  builder: (BuildContext context) => CartsPage())),
-                ),
-                IconButton(
                   icon: Icon(Icons.list),
-                  onPressed: () =>
-                      Navigator.of(context).pushNamed(Global.greetPage),
+                  onPressed: () {},
                 ),
               ],
             ),

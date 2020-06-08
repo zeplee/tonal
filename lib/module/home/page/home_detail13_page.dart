@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ShopSearchResultPage extends StatelessWidget {
+class HomeDetail13Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -105,10 +105,12 @@ class CounterWidgetState extends State<CounterWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: <Widget>[
-      CounterIncrementor(onPressed: _increment),
-      CounterDisplay(count: _count),
-    ]);
+    return Row(
+      children: <Widget>[
+        CounterIncrementor(onPressed: _increment),
+        CounterDisplay(count: _count),
+      ],
+    );
   }
 }
 
