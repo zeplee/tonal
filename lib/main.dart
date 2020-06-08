@@ -93,9 +93,9 @@ class App extends StatelessWidget {
       themeMode: Global.themeMode,
 
       navigatorKey: RouteHelper.navigatorKey,
-//      routes: Global.routes,
-      onGenerateRoute: Global.onGenerateRoute,
-//      onUnknownRoute: Global.onUnknownRoute,
+      routes: Global.routes,
+//      onGenerateRoute: Global.onGenerateRoute,
+      onUnknownRoute: Global.onUnknownRoute,
       initialRoute: Global.greetPage,
       home: HomePage(),
     );

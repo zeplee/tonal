@@ -12,6 +12,7 @@ class HomePage extends StatelessWidget {
     Global.homeDetail5Page: '自创ValueNotifier',
     Global.homeDetail6Page: 'StatefulWidget',
     Global.homeDetail7Page: '网络列表',
+    Global.shopIndexPage: '商城模版',
   };
 
   @override

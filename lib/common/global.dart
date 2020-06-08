@@ -94,7 +94,9 @@ class Global {
 
   static const unknownPage = '/UnknownPage';
   static const errorPage = '/ErrorPage';
+
   static const greetPage = '/GreetPage';
+
   static const homePage = '/HomePage';
   static const homeDetail1Page = '/HomePage/HomeDetail1Page';
   static const homeDetail2Page = '/HomePage/HomeDetail2Page';
@@ -103,6 +105,17 @@ class Global {
   static const homeDetail5Page = '/HomePage/HomeDetail5Page';
   static const homeDetail6Page = '/HomePage/HomeDetail6Page';
   static const homeDetail7Page = '/HomePage/HomeDetail7Page';
+
+  static const shopIndexPage = '/ShopIndexPage';
+  static const shopMinePage = '/ShopMinePage';
+  static const shopCartsPage = '/ShopCartsPage';
+  static const shopCategoryPage = '/ShopCategoryPage';
+  static const shopSearchPage = '/ShopSearchPage';
+  static const shopProdPage = '/ShopProdPage';
+  static const shopShopPage = '/ShopShopPage';
+  static const shopAboutPage = '/ShopAboutPage';
+  static const shopSettingsPage = '/ShopSettingsPage';
+  static const shopLoginPage = '/ShopLoginPage';
 
   ///路由方案1 routes+onUnknownRoute 默认使用MaterialPageRoute 无法单独设置转场动画，背景是黑色，统一转场动画可通过pageTransitionsTheme
   static Map<String, WidgetBuilder> routes = {
@@ -117,6 +130,16 @@ class Global {
     homeDetail5Page: (BuildContext context) => HomeDetail5Page(),
     homeDetail6Page: (BuildContext context) => HomeDetail6Page(),
     homeDetail7Page: (BuildContext context) => HomeDetail7Page(),
+    shopIndexPage: (BuildContext context) => ShopIndexPage(),
+    shopMinePage: (BuildContext context) => ShopMinePage(),
+    shopCartsPage: (BuildContext context) => ShopCartsPage(),
+    shopCategoryPage: (BuildContext context) => ShopCategoryPage(),
+    shopSearchPage: (BuildContext context) => ShopSearchResultPage(),
+    shopProdPage: (BuildContext context) => ShopProdPage(),
+    shopShopPage: (BuildContext context) => ShopShopPage(),
+    shopAboutPage: (BuildContext context) => ShopAboutPage(),
+    shopSettingsPage: (BuildContext context) => ShopSettingsPage(),
+    shopLoginPage: (BuildContext context) => ShopLoginPage(),
   };
 
   static Route<dynamic> onUnknownRoute(RouteSettings setting) =>
