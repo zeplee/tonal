@@ -50,9 +50,9 @@ class Global {
 
   static ThemeMode themeMode = ThemeMode.system;
   static ThemeData lightTheme = ThemeData(
-    platform: TargetPlatform.iOS,
+    platform: TargetPlatform.android,
     visualDensity: VisualDensity.adaptivePlatformDensity,
-//    pageTransitionsTheme: Global.pageTransitionsTheme,
+    pageTransitionsTheme: Global.pageTransitionsTheme,
 // primarySwatch: Colors.blue,//主题样本套件
     primaryColor: Colors.white,
     primaryColorDark: Colors.white,

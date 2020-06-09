@@ -79,6 +79,15 @@ class HomeDetail12Page extends StatelessWidget {
                       )
                     ],
                   )),
+              SizedBox(
+                height: 40,
+                child: FlatButton(
+                  color: Colors.blue,
+                  shape: StadiumBorder(),
+                  onPressed: () {},
+                  child: Text('发发多少'),
+                ),
+              ),
               Container(
                 width: 200.0,
                 height: 100.0,

@@ -42,25 +42,25 @@ class HomePage extends StatelessWidget {
       );
 
   _buildBody() => ListView.builder(
-        itemCount: items.length,
         //去除越界效果
         physics: ClampingScrollPhysics(),
-        itemBuilder: (context, i) {
-          return SizedBox(
-            height: 40,
-            child: FlatButton(
-              color: Colors.blue,
-              shape: StadiumBorder(),
-              child: Text(items.keys.toList()[i]),
-              onPressed: () {
-                RouteHelper.push(
-                  items.values.toList()[i],
-                  arguments: {"title": "dfahomeDetailPage"},
-                );
-              },
-            ),
-          );
-        },
+        itemCount: items.length,
+        itemBuilder: (context, i) => _buildItem(context, i),
+      );
+
+  _buildItem(context, int i) => SizedBox(
+        height: 50,
+        child: FlatButton(
+          child: Text(
+            items.keys.toList()[i],
+          ),
+          onPressed: () {
+            RouteHelper.push(
+              items.values.toList()[i],
+              arguments: {"title": "dfahomeDetailPage"},
+            );
+          },
+        ),
       );
 
   _onBack(BuildContext context) => () async {
