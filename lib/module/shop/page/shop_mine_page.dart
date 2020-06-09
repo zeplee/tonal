@@ -6,6 +6,7 @@ class ShopMinePage extends StatelessWidget {
         appBar: AppBar(
           title: Text('MinePage'),
           centerTitle: true,
+          automaticallyImplyLeading: false,
         ),
         body: Text('fdasf'),
         floatingActionButton: FloatingActionButton(

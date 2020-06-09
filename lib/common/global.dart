@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base/flutter_base.dart';
 import 'package:tonal/common/common.dart';
 import 'package:tonal/module/module.dart';
 
@@ -49,9 +50,9 @@ class Global {
 
   static ThemeMode themeMode = ThemeMode.system;
   static ThemeData lightTheme = ThemeData(
-    platform: TargetPlatform.android,
+    platform: TargetPlatform.iOS,
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    pageTransitionsTheme: Global.pageTransitionsTheme,
+//    pageTransitionsTheme: Global.pageTransitionsTheme,
 // primarySwatch: Colors.blue,//主题样本套件
     primaryColor: Colors.white,
     primaryColorDark: Colors.white,
@@ -114,11 +115,7 @@ class Global {
   static const homeDetail14Page = '/HomePage/HomeDetail14Page';
 
   static const shopIndexPage = '/ShopIndexPage';
-  static const shopMinePage = '/ShopMinePage';
   static const shopCartsPage = '/ShopCartsPage';
-  static const shopCategoryPage = '/ShopCategoryPage';
-  static const shopSearchPage = '/ShopSearchPage';
-  static const shopShopPage = '/ShopShopPage';
 
   ///路由方案1 routes+onUnknownRoute 默认使用MaterialPageRoute 无法单独设置转场动画，背景是黑色，统一转场动画可通过pageTransitionsTheme
   static Map<String, WidgetBuilder> routes = {
@@ -141,9 +138,7 @@ class Global {
     homeDetail13Page: (BuildContext context) => HomeDetail13Page(),
     homeDetail14Page: (BuildContext context) => HomeDetail14Page(),
     shopIndexPage: (BuildContext context) => ShopIndexPage(),
-    shopMinePage: (BuildContext context) => ShopMinePage(),
     shopCartsPage: (BuildContext context) => ShopCartsPage(),
-    shopCategoryPage: (BuildContext context) => ShopCategoryPage(),
   };
 
   static Route<dynamic> onUnknownRoute(RouteSettings setting) =>
@@ -154,77 +149,22 @@ class Global {
     String routeName = settings.name;
     switch (routeName) {
       case errorPage:
-        return appPageRoute(ErrorPage());
+        return RouteHelper.appPageRoute(ErrorPage());
       case unknownPage:
-        return appPageRoute(UnknownPage());
+        return RouteHelper.appPageRoute(UnknownPage());
       case greetPage:
-        return appPageRoute(GreetPage());
+        return RouteHelper.appPageRoute(GreetPage());
       case homePage:
-        return MaterialPageRoute(builder: (context) => HomePage());
+        return RouteHelper.appPageRoute(HomePage());
       case homeDetail1Page:
-        return MaterialPageRoute(builder: (context) => HomeDetail1Page());
+        return RouteHelper.appPageRoute(HomeDetail1Page());
       case homeDetail2Page:
-        return MaterialPageRoute(
-            builder: (context) => HomeDetail2Page(), fullscreenDialog: true);
+        return RouteHelper.appPageRoute(HomeDetail2Page());
       case homeDetail3Page:
-        return appPageRoute(HomeDetail3Page());
+        return RouteHelper.appPageRoute(HomeDetail3Page());
       default:
-        return appPageRoute(UnknownPage());
+//        return MaterialPageRoute(builder: (context) => UnknownPage());
+        return RouteHelper.appPageRoute(UnknownPage());
     }
   }
-
-  static Route<dynamic> appPageRoute(
-    Widget widget, {
-    bool opaque = false,
-    int duration = 200,
-  }) {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation1, animation2) => widget,
-      opaque: opaque,
-      transitionDuration: Duration(milliseconds: duration),
-      transitionsBuilder: (context, animation1, animation2, Widget child) {
-//        return FadeTransition(
-//          opacity: Tween(begin: 0.0, end: 1.0).animate(
-//            CurvedAnimation(
-//              parent: animation1,
-//              curve: Curves.fastOutSlowIn,
-//            ),
-//          ),
-//          child: child,
-//        );
-//        return FadeTransition(
-//          opacity: animation1,
-//          child: ScaleTransition(
-//            scale: Tween<double>(begin: 0.5, end: 1.0).animate(animation1),
-//            child: child,
-//          ),
-//        );
-        return ScaleTransition(
-          scale: Tween(begin: 0.0, end: 1.0).animate(
-            CurvedAnimation(parent: animation1, curve: Curves.fastOutSlowIn),
-          ),
-          child: child,
-        );
-        return SlideTransition(
-          position:
-              Tween<Offset>(begin: Offset(-1.0, 0.0), end: Offset(0.0, 0.0))
-                  .animate(
-            CurvedAnimation(parent: animation1, curve: Curves.fastOutSlowIn),
-          ),
-          child: child,
-        );
-      },
-    );
-  }
-}
-
-class AppPageRoute extends PageRouteBuilder {
-  final Widget widget;
-
-  AppPageRoute(this.widget)
-      : super(
-          transitionDuration: Duration(seconds: 1),
-          pageBuilder: (context, animaton1, animaton2) => widget,
-          transitionsBuilder: (context, animaton1, animaton2, Widget child) {},
-        );
 }

@@ -71,7 +71,7 @@ class ShopCategoryBodyState extends State<ShopCategoryBody> {
           style: TextStyle(fontSize: 10.0),
         ),
         onTap: () {
-          Navigator.of(context).pushNamed(Global.shopShopPage);
+          Navigator.of(context).pushNamed(Global.shopCartsPage);
         },
       );
 }

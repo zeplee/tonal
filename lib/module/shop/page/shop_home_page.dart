@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base/flutter_base.dart';
 import 'package:tonal/common/common.dart';
 
 class ShopHomePage extends StatefulWidget {
@@ -16,6 +17,9 @@ class ShopHomePageState extends State<ShopHomePage>
   @override
   void initState() {
     super.initState();
+    KeyboardVisibility.onChange.listen((bool visible) {
+      if (!visible) FocusScope.of(context).unfocus();
+    });
     tabTitles = [
       "tab1",
       "tab2",
@@ -28,15 +32,15 @@ class ShopHomePageState extends State<ShopHomePage>
       "tab9",
     ];
     tabBodys = [
-      HomeBody(),
-      HomeBody(),
-      HomeBody(),
-      HomeBody(),
-      HomeBody(),
-      HomeBody(),
-      HomeBody(),
-      HomeBody(),
-      HomeBody(),
+      ShopHomeBody(),
+      ShopHomeBody(),
+      ShopHomeBody(),
+      ShopHomeBody(),
+      ShopHomeBody(),
+      ShopHomeBody(),
+      ShopHomeBody(),
+      ShopHomeBody(),
+      ShopHomeBody(),
     ];
     tabController = TabController(length: tabTitles.length, vsync: this)
       ..addListener(() {
@@ -57,48 +61,34 @@ class ShopHomePageState extends State<ShopHomePage>
   }
 
   @override
-  Widget build(BuildContext context) =>
-//      Container(
-//      decoration: BoxDecoration(
-//          image: DecorationImage(
-//        image: NetworkImage(
-//            'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg'),
-//        fit: BoxFit.cover,
-//      )),
-      Scaffold(
-//          backgroundColor: Colors.transparent,
-          appBar: appBar(context),
-          body: TabBarView(controller: tabController, children: tabBodys));
+  Widget build(BuildContext context) => Scaffold(
+      appBar: _buildAppBar(context),
+      body: TabBarView(controller: tabController, children: tabBodys));
 
-//  );
-
-  appBar(BuildContext context) =>
-//      PreferredSize(
-//      child:
-      AppBar(
-//        backgroundColor: Colors.transparent,
-        //是否占用状态栏
+  _buildAppBar(BuildContext context) => AppBar(
+        //是否占用状态栏 false占用
         primary: true,
-        //是否占满剩余空间
         titleSpacing: 0.0,
-        toolbarOpacity: 0.6,
-        bottomOpacity: 0.6,
+        toolbarOpacity: 1.0,
+        bottomOpacity: 1.0,
         leading: IconButton(
           icon: Icon(Icons.mms),
           tooltip: 'Navigation menu',
-          onPressed: () =>
-              Navigator.of(context).pushNamed(Global.shopCategoryPage),
+          onPressed: () {},
         ),
         title: TextField(
+          autofocus: false,
           textAlign: TextAlign.center,
-          onSubmitted: (String text) {
-            if (text.isNotEmpty) {
-              Navigator.of(context).pushNamed(Global.shopSearchPage);
-            }
-          },
+          onSubmitted: (String text) {},
           decoration: InputDecoration(
+            isDense: true,
+            contentPadding: EdgeInsets.all(5),
             hintText: "小苹果",
             border: OutlineInputBorder(
+//                border: InputBorder.none,
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            focusedBorder: OutlineInputBorder(
 //                border: InputBorder.none,
               borderRadius: BorderRadius.circular(15.0),
             ),
@@ -107,18 +97,13 @@ class ShopHomePageState extends State<ShopHomePage>
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.face),
-            onPressed: () => Navigator.pushNamed(context, Global.shopCartsPage),
+            onPressed: () {},
           ),
         ],
-        bottom: tabBar(),
-//      ),
-//      preferredSize: Size.fromHeight(40.0)
+        bottom: _buildTabBar(),
       );
 
-//      PreferredSize(
-//      child:
-
-  tabBar() => TabBar(
+  _buildTabBar() => TabBar(
 //      onTap: (int index) {
 //        setState(() {
 //          _tabCurIndex = index;
@@ -148,12 +133,13 @@ class ShopHomePageState extends State<ShopHomePage>
           .toList());
 }
 
-class HomeBody extends StatefulWidget {
+class ShopHomeBody extends StatefulWidget {
   @override
-  HomeBodyState createState() => HomeBodyState();
+  ShopHomeBodyState createState() => ShopHomeBodyState();
 }
 
-class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
+class ShopHomeBodyState extends State<ShopHomeBody>
+    with AutomaticKeepAliveClientMixin {
   //保存tab页面状态
   @override
   bool get wantKeepAlive => true;
@@ -183,23 +169,21 @@ class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
   Widget build(BuildContext context) {
     super.build(context);
     return RefreshIndicator(
-      //下拉刷新
+      onRefresh: _onRefresh,
       child: CustomScrollView(
         physics: AlwaysScrollableScrollPhysics(),
-        //使用builder有自动回收功能
         slivers: <Widget>[
           ShopHomeBodyTopWidget(),
-          stickyBar(),
+          _buildStickyBar1(),
           ShopHomeBodyTopWidget(),
-          stickyBar2(),
+          _buildStickyBar2(),
           ShopHomeBodyBottomWidget(),
         ],
       ),
-      onRefresh: refresh,
     );
   }
 
-  Future refresh() async {
+  Future _onRefresh() async {
     // 延迟3秒后添加新数据， 模拟网络加载
     await Future.delayed(Duration(seconds: 3), () {
       setState(() {
@@ -209,10 +193,10 @@ class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
     });
   }
 
-  stickyBar() => SliverPersistentHeader(
-      pinned: true, //是否固定在顶部
-      floating: true,
-      delegate: SliverAppBarDelegate(
+  _buildStickyBar1() => SliverPersistentHeader(
+        pinned: true, //是否固定在顶部
+        floating: true,
+        delegate: SliverAppBarDelegate(
           minHeight: 50, //收起的高度
           maxHeight: 50, //展开的最大高度
           child: DefaultTabController(
@@ -235,14 +219,12 @@ class HomeBodyState extends State<HomeBody> with AutomaticKeepAliveClientMixin {
                         insets: EdgeInsets.only(left: 15, right: 15),
                         borderSide:
                             BorderSide(width: 4.0, color: Colors.blueAccent)),
-                    tabs: tabTitles
-                        .map((item) => Tab(
-                              text: item,
-                            ))
-                        .toList())),
-          )));
+                    tabs: tabTitles.map((item) => Tab(text: item)).toList())),
+          ),
+        ),
+      );
 
-  stickyBar2() => SliverPersistentHeader(
+  _buildStickyBar2() => SliverPersistentHeader(
       pinned: true, //是否固定在顶部
       floating: false,
       delegate: SliverAppBarDelegate(
@@ -405,7 +387,7 @@ class ShopHomeBodyListItem extends StatelessWidget {
                 style: TextStyle(fontSize: 10.0),
               ),
               onTap: () {
-                Navigator.of(context).pushNamed(Global.shopShopPage);
+                Navigator.of(context).pushNamed(Global.shopCartsPage);
               })
         ],
       );

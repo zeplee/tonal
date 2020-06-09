@@ -77,7 +77,15 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _handleDebug();
-    return MaterialApp(
+    // 触摸收起键盘-但是如果触摸有点击事件的位置则无效，不完美方案
+    return
+//      GestureDetector(
+//      behavior: HitTestBehavior.translucent,
+//      onTap: () {
+//        FocusScope.of(context).requestFocus(FocusNode());
+//      },
+//      child:
+        MaterialApp(
       debugShowMaterialGrid: Global.debugShowMaterialGrid,
       showPerformanceOverlay: Global.showPerformanceOverlay,
       debugShowCheckedModeBanner: Global.debugShowCheckedModeBanner,
@@ -98,6 +106,7 @@ class App extends StatelessWidget {
       onUnknownRoute: Global.onUnknownRoute,
       initialRoute: Global.greetPage,
       home: HomePage(),
+//      ),
     );
   }
 }
