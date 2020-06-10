@@ -48,16 +48,20 @@ class Global {
   // Text重绘标记
   static const debugRepaintTextRainbowEnabled = false;
 
-  static ThemeMode themeMode = ThemeMode.system;
+  static const ThemeMode themeMode = ThemeMode.system;
   static ThemeData lightTheme = ThemeData(
     platform: TargetPlatform.android,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     pageTransitionsTheme: Global.pageTransitionsTheme,
 // primarySwatch: Colors.blue,//主题样本套件
     primaryColor: Colors.white,
-    primaryColorDark: Colors.white,
-//        splashColor: Colors.red,
-//        highlightColor: Colors.red,
+    //次级色，决定大多数Widget的颜色，如进度条、开关,列表顶部水波纹回弹色
+    accentColor: Colors.red,
+//    primaryColorDark: Colors.white,
+    //水波纹波纹色
+    splashColor: Color(0x55ffffff),
+    //水波纹底色
+    highlightColor: Color(0x55ffffff),
 //        dividerColor: Colors.pink,
 //        cursorColor: Colors.red,
 //        textSelectionColor: Colors.red,
@@ -73,7 +77,7 @@ class Global {
 //        pageTransitionsTheme: Global.pageTransitionsTheme,
     // primarySwatch: Colors.brown,//主题样本套件
     primaryColor: Colors.black,
-    primaryColorDark: Colors.black,
+//        primaryColorDark: Colors.black,
 //        splashColor: Colors.red,
 //        highlightColor: Colors.red,
 //        dividerColor: Colors.pink,

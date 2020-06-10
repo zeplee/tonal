@@ -151,7 +151,7 @@ packages:
     description:
       path: "."
       ref: master
-      resolved-ref: "829cdce563fc4468e33d92c1432498db291850d6"
+      resolved-ref: "0ff5f65660e8a1799757e09a5ce7624a7cd4c265"
       url: "https://github.com/Li-Zepeng/flutter_base.git"
     source: git
     version: "0.0.1"
@@ -297,14 +297,14 @@ packages:
       name: permission_handler
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "5.0.0+hotfix.9"
+    version: "5.0.1"
   permission_handler_platform_interface:
     dependency: transitive
     description:
       name: permission_handler_platform_interface
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.1"
   petitparser:
     dependency: transitive
     description:
